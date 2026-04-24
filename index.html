@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>H3AD-AI — AI-Powered Threat Analysis // H3AD-SEC</title>
-  <meta name="description" content="H3AD-AI by H3AD-SEC — AI-powered threat intelligence analysis, automated triage, and LLM-driven detection engineering. Coming soon.">
+  <meta name="description"
+    content="H3AD-AI by H3AD-SEC — AI-powered threat intelligence analysis, automated triage, and LLM-driven detection engineering. Coming soon.">
   <link rel="icon" href="https://h3ad-sec.github.io/fevicon.png?v=2026" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
@@ -23,131 +25,651 @@
       --border-dim: #121e30;
       --nav-h: 48px;
     }
+
     body.light {
-      --bg: #eef2f8; --panel: #ffffff; --panel-alt: #e4ecf6;
-      --surface: #ccd8ec; --text: #060e1c; --text-dim: #142540;
-      --muted: #2c4a6a; --muted-dim: #5c7a9a;
-      --accent: #004db8; --accent2: #007a55;
-      --border: #a0b8d4; --border-dim: #c8d8ec;
+      --bg: #eef2f8;
+      --panel: #ffffff;
+      --panel-alt: #e4ecf6;
+      --surface: #ccd8ec;
+      --text: #060e1c;
+      --text-dim: #142540;
+      --muted: #2c4a6a;
+      --muted-dim: #5c7a9a;
+      --accent: #004db8;
+      --accent2: #007a55;
+      --border: #a0b8d4;
+      --border-dim: #c8d8ec;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: var(--text); font-family: 'Share Tech Mono', monospace; font-size: 14px; line-height: 1.6; min-height: 100vh; overflow-x: hidden; transition: background 0.3s, color 0.3s; }
-    a { color: inherit; text-decoration: none; }
 
-    #matrix-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.18; }
-    body.light #matrix-canvas { opacity: 0.10; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: rgba(8,12,18,0.9); border-bottom: 1px solid var(--border); height: var(--nav-h); display: flex; align-items: center; padding: 0 1.25rem; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
-    body.light .nav { background: rgba(242,245,250,0.9); }
-    .nav-brand { flex-shrink: 0; margin-right: 1rem; }
-    .nav-brand img { height: 22px; display: block; }
-    .nav-links { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 2px; overflow: visible; }
-    .nav-links a { font-size: 0.68rem; color: var(--muted); padding: 5px 9px; border-radius: 4px; border: 1px solid transparent; white-space: nowrap; transition: color 0.15s, border-color 0.15s, background 0.15s; flex-shrink: 0; }
-    .nav-links a:hover { color: var(--accent); border-color: var(--border); background: rgba(0,255,159,0.05); }
-    body.light .nav-links a:hover { background: rgba(0,77,184,0.07); }
-    .nav-links a.nav-current { color: var(--accent); border-color: var(--accent); background: rgba(0,255,159,0.06); }
-    body.light .nav-links a.nav-current { background: rgba(0,77,184,0.07); }
-    .nav-links a:last-child { border: 1px solid var(--border); }
-    .nav-divider { width: 1px; height: 16px; background: var(--border); margin: 0 6px; flex-shrink: 0; opacity: 0.6; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-    .nav-item { position: relative; display: flex; align-items: center; }
-    .nav-dropdown { display: none; position: absolute; top: 100%; left: 0; min-width: 120px; padding-top: 6px; z-index: 100; }
-    .nav-dropdown-inner { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
-    .nav-item:hover .nav-dropdown { display: block; }
-    .nav-links .nav-dropdown a { display: block; padding: 7px 12px; font-size: 0.65rem; color: var(--muted); border: none; border-left: 2px solid transparent; border-radius: 0; transition: 0.15s; }
-    .nav-links .nav-dropdown a:hover { color: var(--accent); border-left-color: var(--accent); background: rgba(0,255,159,0.04); }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
 
-    .theme-toggle { margin-left: auto; flex-shrink: 0; cursor: pointer; padding-left: 1rem; }
-    .toggle-track { width: 42px; height: 22px; background: var(--border); border-radius: 50px; position: relative; transition: background 0.3s; }
-    .toggle-thumb { width: 14px; height: 14px; background: var(--accent); border-radius: 50%; position: absolute; top: 4px; left: 4px; transition: transform 0.3s; box-shadow: 0 0 8px var(--accent); }
-    body.light .toggle-thumb { transform: translateX(20px); }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 4px; cursor: pointer; padding: 6px; margin-right: 8px; flex-shrink: 0; }
-    .hamburger span { display: block; width: 18px; height: 2px; background: var(--muted); border-radius: 2px; transition: 0.2s; }
+    #matrix-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.18;
+    }
 
-    .nav-drawer { display: none; position: fixed; top: var(--nav-h); left: 0; right: 0; background: var(--panel); border-bottom: 1px solid var(--border); z-index: 49; padding: 0.75rem 1.25rem 1rem; flex-direction: column; gap: 2px; }
-    .nav-drawer.open { display: flex; }
-    .nav-drawer a { font-size: 0.75rem; color: var(--text-dim); padding: 8px 10px; border-radius: 4px; border-left: 2px solid transparent; transition: 0.15s; }
-    .nav-drawer a:hover { color: var(--accent); border-left-color: var(--accent); background: rgba(0,255,159,0.04); }
-    .nav-drawer a.nav-current { color: var(--accent); border-left-color: var(--accent); }
-    .drawer-sub { padding-left: 1.8rem !important; font-size: 0.7rem !important; opacity: 0.8; }
+    body.light #matrix-canvas {
+      opacity: 0.10;
+    }
 
-    .page { position: relative; z-index: 1; max-width: 860px; margin: 0 auto; padding: calc(var(--nav-h) + 3rem) 2rem 7rem; }
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(8, 12, 18, 0.9);
+      border-bottom: 1px solid var(--border);
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      padding: 0 1.25rem;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
 
-    .hero { padding: 3rem 0 2rem; }
-    .hero-tag { font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); opacity: 0.75; display: block; margin-bottom: 1rem; }
-    .hero-title { font-size: clamp(1.4rem, 4vw, 2.6rem); color: var(--text); letter-spacing: 0.04em; line-height: 1.3; margin-bottom: 1rem; }
-    .hero-title span { color: var(--accent); text-shadow: 0 0 32px rgba(0,255,159,0.4); }
-    body.light .hero-title span { text-shadow: 0 0 24px rgba(0,77,184,0.35); }
-    .hero-sub { font-size: 0.74rem; color: var(--text-dim); line-height: 1.9; max-width: 620px; }
+    body.light .nav {
+      background: rgba(242, 245, 250, 0.9);
+    }
 
-    .status-row { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0 2rem; flex-wrap: wrap; }
-    .badge-cs { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 3px; font-size: 0.63rem; letter-spacing: 0.14em; text-transform: uppercase; background: rgba(77,148,255,0.08); color: var(--accent2); border: 1px solid rgba(77,148,255,0.2); }
-    body.light .badge-cs { color: var(--accent2); border-color: rgba(0,122,85,0.25); background: rgba(0,122,85,0.06); }
-    .badge-cs .dot-pulse { width: 5px; height: 5px; border-radius: 50%; background: currentColor; animation: pulse 2.2s ease-in-out infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .nav-brand {
+      flex-shrink: 0;
+      margin-right: 1rem;
+    }
 
-    .terminal { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.4); margin-bottom: 2.5rem; }
-    body.light .terminal { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
-    .terminal-bar { display: flex; align-items: center; gap: 7px; padding: 0.7rem 1.1rem; background: var(--panel-alt); border-bottom: 1px solid var(--border); }
-    .tbar-dot { width: 11px; height: 11px; border-radius: 50%; }
-    .tbar-dot.r { background: #ff5f57; } .tbar-dot.y { background: #febc2e; } .tbar-dot.g { background: #28c840; }
-    .tbar-label { margin-left: auto; font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.05em; opacity: 0.5; }
-    .terminal-body { padding: 1.5rem 2rem; }
-    .t-line { display: flex; flex-wrap: wrap; align-items: baseline; margin-bottom: 0.45rem; }
-    .t-line.gap { margin-bottom: 1.2rem; }
-    .t-line:last-child { margin-bottom: 0; }
-    .prompt { color: var(--accent); white-space: nowrap; font-size: 0.8rem; margin-right: 0.6rem; user-select: none; }
-    .cmd { color: var(--text); font-size: 0.8rem; }
-    .out { width: 100%; padding: 0.15rem 0 0.15rem 1.5rem; font-size: 0.76rem; }
-    .out-hl { color: var(--text-dim); }
-    .out-acc { color: var(--accent); }
-    .out-dim { color: var(--muted); }
-    .cursor { display: inline-block; width: 8px; height: 14px; background: var(--accent); vertical-align: middle; margin-left: 2px; animation: blink 1s step-end infinite; }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .nav-brand img {
+      height: 22px;
+      display: block;
+    }
 
-    .section-label { font-size: 0.65rem; letter-spacing: 0.22em; color: var(--muted); border-bottom: 1px solid var(--border); padding-bottom: 0.65rem; margin: 3rem 0 1.8rem; }
+    .nav-links {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      overflow: visible;
+    }
 
-    .feat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background: var(--surface); }
-    .feat-card { background: var(--panel); padding: 1.4rem 1.6rem; transition: background 0.15s; }
-    .feat-card:hover { background: var(--panel-alt); }
-    .feat-icon { font-size: 18px; margin-bottom: 0.75rem; }
-    .feat-title { color: var(--accent); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
-    .feat-desc { color: var(--muted); font-size: 0.73rem; line-height: 1.75; }
+    .nav-links a {
+      font-size: 0.68rem;
+      color: var(--muted);
+      padding: 5px 9px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+      flex-shrink: 0;
+    }
 
-    .back-link { margin-top: 3rem; }
-    .back-link a { color: var(--muted); font-size: 0.72rem; border-bottom: 1px solid var(--border-dim); transition: color 0.15s, border-color 0.15s; }
-    .back-link a:hover { color: var(--accent); border-color: var(--accent); }
+    .nav-links a:hover {
+      color: var(--accent);
+      border-color: var(--border);
+      background: rgba(0, 255, 159, 0.05);
+    }
 
-    footer { position: relative; z-index: 1; border-top: 1px solid var(--border-dim); padding: 1.5rem 2.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
-    .footer-left { color: var(--muted); font-size: 0.65rem; letter-spacing: 0.06em; }
-    .footer-right { color: var(--accent); font-size: 0.63rem; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.45; }
+    body.light .nav-links a:hover {
+      background: rgba(0, 77, 184, 0.07);
+    }
 
-    ::-webkit-scrollbar { width: 3px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .nav-links a.nav-current {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: rgba(0, 255, 159, 0.06);
+    }
 
-    @media (max-width: 900px) { .nav-links { display: none; } .hamburger { display: flex; } }
-    @media (max-width: 640px) { .page { padding: calc(var(--nav-h) + 1rem) 1.1rem 4rem; } .terminal-body { padding: 1.1rem 1.25rem; } footer { padding: 1.2rem 1.25rem; } }
+    body.light .nav-links a.nav-current {
+      background: rgba(0, 77, 184, 0.07);
+    }
+
+    .nav-links a:last-child {
+      border: 1px solid var(--border);
+    }
+
+    .nav-divider {
+      width: 1px;
+      height: 16px;
+      background: var(--border);
+      margin: 0 6px;
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+
+    .nav-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 120px;
+      padding-top: 6px;
+      z-index: 100;
+    }
+
+    .nav-dropdown-inner {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .nav-item:hover .nav-dropdown {
+      display: block;
+    }
+
+    .nav-links .nav-dropdown a {
+      display: block;
+      padding: 7px 12px;
+      font-size: 0.65rem;
+      color: var(--muted);
+      border: none;
+      border-left: 2px solid transparent;
+      border-radius: 0;
+      transition: 0.15s;
+    }
+
+    .nav-links .nav-dropdown a:hover {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: rgba(0, 255, 159, 0.04);
+    }
+
+    .theme-toggle {
+      margin-left: auto;
+      flex-shrink: 0;
+      cursor: pointer;
+      padding-left: 1rem;
+    }
+
+    .toggle-track {
+      width: 42px;
+      height: 22px;
+      background: var(--border);
+      border-radius: 50px;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .toggle-thumb {
+      width: 14px;
+      height: 14px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      transition: transform 0.3s;
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    body.light .toggle-thumb {
+      transform: translateX(20px);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+      padding: 6px;
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--muted);
+      border-radius: 2px;
+      transition: 0.2s;
+    }
+
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      background: var(--panel);
+      border-bottom: 1px solid var(--border);
+      z-index: 49;
+      padding: 0.75rem 1.25rem 1rem;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-drawer.open {
+      display: flex;
+    }
+
+    .nav-drawer a {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      padding: 8px 10px;
+      border-radius: 4px;
+      border-left: 2px solid transparent;
+      transition: 0.15s;
+    }
+
+    .nav-drawer a:hover {
+      color: var(--accent);
+      border-left-color: var(--accent);
+      background: rgba(0, 255, 159, 0.04);
+    }
+
+    .nav-drawer a.nav-current {
+      color: var(--accent);
+      border-left-color: var(--accent);
+    }
+
+    .drawer-sub {
+      padding-left: 1.8rem !important;
+      font-size: 0.7rem !important;
+      opacity: 0.8;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: calc(var(--nav-h) + 3rem) 2rem 7rem;
+    }
+
+    .hero {
+      padding: 3rem 0 2rem;
+    }
+
+    .hero-tag {
+      font-size: 0.6rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.75;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: clamp(1.4rem, 4vw, 2.6rem);
+      color: var(--text);
+      letter-spacing: 0.04em;
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+      text-shadow: 0 0 32px rgba(0, 255, 159, 0.4);
+    }
+
+    body.light .hero-title span {
+      text-shadow: 0 0 24px rgba(0, 77, 184, 0.35);
+    }
+
+    .hero-sub {
+      font-size: 0.74rem;
+      color: var(--text-dim);
+      line-height: 1.9;
+      max-width: 620px;
+    }
+
+    .status-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0 2rem;
+      flex-wrap: wrap;
+    }
+
+    .badge-cs {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border-radius: 3px;
+      font-size: 0.63rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: rgba(77, 148, 255, 0.08);
+      color: var(--accent2);
+      border: 1px solid rgba(77, 148, 255, 0.2);
+    }
+
+    body.light .badge-cs {
+      color: var(--accent2);
+      border-color: rgba(0, 122, 85, 0.25);
+      background: rgba(0, 122, 85, 0.06);
+    }
+
+    .badge-cs .dot-pulse {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.3
+      }
+    }
+
+    .terminal {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
+      margin-bottom: 2.5rem;
+    }
+
+    body.light .terminal {
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0.7rem 1.1rem;
+      background: var(--panel-alt);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tbar-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .tbar-dot.r {
+      background: #ff5f57;
+    }
+
+    .tbar-dot.y {
+      background: #febc2e;
+    }
+
+    .tbar-dot.g {
+      background: #28c840;
+    }
+
+    .tbar-label {
+      margin-left: auto;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+      opacity: 0.5;
+    }
+
+    .terminal-body {
+      padding: 1.5rem 2rem;
+    }
+
+    .t-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      margin-bottom: 0.45rem;
+    }
+
+    .t-line.gap {
+      margin-bottom: 1.2rem;
+    }
+
+    .t-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .prompt {
+      color: var(--accent);
+      white-space: nowrap;
+      font-size: 0.8rem;
+      margin-right: 0.6rem;
+      user-select: none;
+    }
+
+    .cmd {
+      color: var(--text);
+      font-size: 0.8rem;
+    }
+
+    .out {
+      width: 100%;
+      padding: 0.15rem 0 0.15rem 1.5rem;
+      font-size: 0.76rem;
+    }
+
+    .out-hl {
+      color: var(--text-dim);
+    }
+
+    .out-acc {
+      color: var(--accent);
+    }
+
+    .out-dim {
+      color: var(--muted);
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background: var(--accent);
+      vertical-align: middle;
+      margin-left: 2px;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0
+      }
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.65rem;
+      margin: 3rem 0 1.8rem;
+    }
+
+    .feat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .feat-card {
+      background: var(--panel);
+      padding: 1.4rem 1.6rem;
+      transition: background 0.15s;
+    }
+
+    .feat-card:hover {
+      background: var(--panel-alt);
+    }
+
+    .feat-icon {
+      font-size: 18px;
+      margin-bottom: 0.75rem;
+    }
+
+    .feat-title {
+      color: var(--accent);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .feat-desc {
+      color: var(--muted);
+      font-size: 0.73rem;
+      line-height: 1.75;
+    }
+
+    .back-link {
+      margin-top: 3rem;
+    }
+
+    .back-link a {
+      color: var(--muted);
+      font-size: 0.72rem;
+      border-bottom: 1px solid var(--border-dim);
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .back-link a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border-dim);
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .footer-left {
+      color: var(--muted);
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-right {
+      color: var(--accent);
+      font-size: 0.63rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.45;
+    }
+
+    ::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: calc(var(--nav-h) + 1rem) 1.1rem 4rem;
+      }
+
+      .terminal-body {
+        padding: 1.1rem 1.25rem;
+      }
+
+      footer {
+        padding: 1.2rem 1.25rem;
+      }
+    }
   </style>
 </head>
+
 <body>
   <canvas id="matrix-canvas"></canvas>
 
   <nav class="nav">
     <div class="hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></div>
     <div class="nav-brand">
-      <a href="https://h3ad-sec.github.io/"><img id="logoImg" src="https://h3ad-sec.github.io/logo-dark.png" alt="H3AD-SEC"></a>
+      <a href="https://h3ad-sec.github.io/"><img id="logoImg" src="https://h3ad-sec.github.io/logo-dark.png"
+          alt="H3AD-SEC"></a>
     </div>
     <div class="nav-links">
       <div class="nav-divider"></div>
       <a href="https://h3ad-sec.github.io/H3AD/" target="_blank" rel="noopener">H3AD</a>
       <div class="nav-item">
-        <a href="https://h3ad-sec.github.io/h3ad-x/" target="_blank" rel="noopener">H3AD-X</a>
-        <div class="nav-dropdown"><div class="nav-dropdown-inner">
-          <a href="https://h3ad-sec.github.io/VERDIKT/" target="_blank" rel="noopener">VERDIKT</a>
-        </div></div>
+        <a href="https://h3ad-sec.github.io/H3AD-X/" target="_blank" rel="noopener">H3AD-X</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner">
+            <a href="https://h3ad-sec.github.io/VERDIKT/" target="_blank" rel="noopener">VERDIKT</a>
+          </div>
+        </div>
       </div>
       <a class="nav-current" href="#">H3AD-AI</a>
       <a href="https://h3ad-sec.github.io/H3AD-DETECT/" target="_blank" rel="noopener">H3AD-DETECT</a>
@@ -157,20 +679,31 @@
       <a href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener">H3AD-IR</a>
       <a href="mailto:h3adsec@gmail.com">CONTACT</a>
     </div>
-    <div class="theme-toggle" onclick="toggleTheme()"><div class="toggle-track"><div class="toggle-thumb"></div></div></div>
+    <div class="theme-toggle" onclick="toggleTheme()">
+      <div class="toggle-track">
+        <div class="toggle-thumb"></div>
+      </div>
+    </div>
   </nav>
 
   <div class="nav-drawer" id="navDrawer">
     <a href="https://h3ad-sec.github.io/" onclick="closeDrawer()">HOME &nbsp;↗</a>
     <a href="https://h3ad-sec.github.io/H3AD/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD &nbsp;↗</a>
-    <a href="https://h3ad-sec.github.io/h3ad-x/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-X &nbsp;↗</a>
-    <a href="https://h3ad-sec.github.io/VERDIKT/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ VERDIKT &nbsp;↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-X/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-X
+      &nbsp;↗</a>
+    <a href="https://h3ad-sec.github.io/VERDIKT/" target="_blank" rel="noopener" onclick="closeDrawer()"
+      class="drawer-sub">↳ VERDIKT &nbsp;↗</a>
     <a class="nav-current" href="#" onclick="closeDrawer()">H3AD-AI</a>
-    <a href="https://h3ad-sec.github.io/H3AD-DETECT/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-DETECT &nbsp;↗</a>
-    <a href="https://h3ad-sec.github.io/H3AD-HUNT/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-HUNT &nbsp;↗</a>
-    <a href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-OPS &nbsp;↗</a>
-    <a href="https://h3ad-sec.github.io/H3AD-DF/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-DF &nbsp;↗</a>
-    <a href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-IR &nbsp;↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-DETECT/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-DETECT
+      &nbsp;↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-HUNT/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-HUNT
+      &nbsp;↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-OPS/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-OPS
+      &nbsp;↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-DF/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-DF
+      &nbsp;↗</a>
+    <a href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-IR
+      &nbsp;↗</a>
     <a href="mailto:h3adsec@gmail.com" onclick="closeDrawer()">CONTACT</a>
   </div>
 
@@ -179,7 +712,8 @@
       <section class="hero">
         <span class="hero-tag">H3AD-SEC · platform module</span>
         <h1 class="hero-title"><span>H3AD-AI</span> — AI-Powered Threat Analysis</h1>
-        <p class="hero-sub">LLM-driven threat intelligence enrichment, automated IOC triage, and AI-assisted detection engineering — built for analysts who need signal, not noise.</p>
+        <p class="hero-sub">LLM-driven threat intelligence enrichment, automated IOC triage, and AI-assisted detection
+          engineering — built for analysts who need signal, not noise.</p>
         <div class="status-row">
           <span class="badge-cs"><span class="dot-pulse"></span>In Development</span>
         </div>
@@ -192,10 +726,12 @@
         </div>
         <div class="terminal-body">
           <div class="t-line"><span class="prompt">root@h3ad-ai:~$</span><span class="cmd">status</span></div>
-          <div class="t-line gap"><span class="out"><span class="out-acc">H3AD-AI</span><span class="out-dim"> — </span><span class="out-hl">module under active development</span></span></div>
+          <div class="t-line gap"><span class="out"><span class="out-acc">H3AD-AI</span><span class="out-dim"> —
+              </span><span class="out-hl">module under active development</span></span></div>
 
           <div class="t-line"><span class="prompt">root@h3ad-ai:~$</span><span class="cmd">cat mission.txt</span></div>
-          <div class="t-line gap"><span class="out"><span class="out-hl">Apply large language models to the threat intelligence cycle — from IOC enrichment to detection hypothesis to analyst report.</span></span></div>
+          <div class="t-line gap"><span class="out"><span class="out-hl">Apply large language models to the threat
+                intelligence cycle — from IOC enrichment to detection hypothesis to analyst report.</span></span></div>
 
           <div class="t-line"><span class="prompt">root@h3ad-ai:~$</span><span class="cursor"></span></div>
         </div>
@@ -232,15 +768,15 @@
     if (saved === 'light') { document.body.classList.add('light'); setLogo('light'); }
     else setLogo('dark');
 
-    (function() {
+    (function () {
       const canvas = document.getElementById('matrix-canvas'), ctx = canvas.getContext('2d');
-      const chars = ['AI','LLM','GPT','RAG','NLP','Embed','Token','Prompt','Chain','Agent',
-        'IOC','TTP','ATT&CK','Sigma','YARA','Hunt','Intel','Enrich','Triage','Score',
-        'T1059','T1047','T1566','T1071','T1003','T1055','T1082','T1105',
-        'SHA256','MD5','IP','Domain','URL','Hash','Pulse','Feed',
-        'Detect','Alert','Block','SIEM','EDR','XDR','Telemetry'];
+      const chars = ['AI', 'LLM', 'GPT', 'RAG', 'NLP', 'Embed', 'Token', 'Prompt', 'Chain', 'Agent',
+        'IOC', 'TTP', 'ATT&CK', 'Sigma', 'YARA', 'Hunt', 'Intel', 'Enrich', 'Triage', 'Score',
+        'T1059', 'T1047', 'T1566', 'T1071', 'T1003', 'T1055', 'T1082', 'T1105',
+        'SHA256', 'MD5', 'IP', 'Domain', 'URL', 'Hash', 'Pulse', 'Feed',
+        'Detect', 'Alert', 'Block', 'SIEM', 'EDR', 'XDR', 'Telemetry'];
       let drops = [];
-      function init() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; drops = Array(Math.floor(window.innerWidth/18)).fill(1); }
+      function init() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; drops = Array(Math.floor(window.innerWidth / 18)).fill(1); }
       function draw() {
         const light = document.body.classList.contains('light');
         ctx.fillStyle = light ? 'rgba(238,242,248,0.1)' : 'rgba(6,8,14,0.14)';
@@ -248,8 +784,8 @@
         ctx.fillStyle = light ? '#004db8' : '#00ff9f';
         ctx.font = '12px monospace';
         for (let i = 0; i < drops.length; i++) {
-          ctx.fillText(chars[Math.floor(Math.random()*chars.length)], i*18, drops[i]*18);
-          if (drops[i]*18 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+          ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * 18, drops[i] * 18);
+          if (drops[i] * 18 > canvas.height && Math.random() > 0.975) drops[i] = 0;
           drops[i]++;
         }
       }
@@ -257,4 +793,5 @@
     })();
   </script>
 </body>
+
 </html>
