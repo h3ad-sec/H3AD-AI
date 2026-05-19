@@ -570,6 +570,20 @@
       line-height: 1.75;
     }
 
+    .card-badge { font-size:0.55rem; letter-spacing:0.18em; padding:3px 8px; border-radius:2px; text-transform:uppercase; white-space:nowrap; }
+    .badge-live { background:rgba(0,255,159,0.12); color:var(--accent); border:1px solid rgba(0,255,159,0.3); }
+    .badge-soon { background:rgba(98,128,156,0.12); color:var(--muted); border:1px solid var(--border); }
+    .tool-feature { background:var(--panel); border:1px solid var(--border); border-radius:6px; padding:28px 28px 22px; margin-bottom:14px; display:flex; flex-direction:column; gap:12px; position:relative; overflow:hidden; transition:border-color 0.2s,background 0.2s; }
+    .tool-feature::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:0.55; }
+    .tool-feature:hover { border-color:rgba(0,255,159,0.35); background:rgba(0,255,159,0.02); }
+    .tf-header { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+    .tf-name { font-size:1rem; letter-spacing:0.14em; color:var(--text); }
+    .tf-tagline { font-size:0.8rem; color:var(--accent); letter-spacing:0.03em; }
+    .tf-body { font-size:0.71rem; color:var(--text-dim); line-height:1.8; max-width:600px; }
+    .tf-meta { font-size:0.57rem; letter-spacing:0.2em; color:var(--muted); border-top:1px solid var(--border-dim); padding-top:10px; margin-top:2px; }
+    .tf-link { display:inline-flex; align-items:center; gap:6px; font-size:0.63rem; letter-spacing:0.14em; color:var(--accent); padding:7px 14px; border:1px solid rgba(0,255,159,0.3); border-radius:3px; transition:0.15s; align-self:flex-start; margin-top:2px; }
+    .tf-link:hover { background:rgba(0,255,159,0.08); }
+
     .back-link {
       margin-top: 3rem;
     }
@@ -673,7 +687,14 @@
           </div>
         </div>
       </div>
-      <a class="nav-current" href="#">H3AD-AI</a>
+      <div class="nav-item">
+        <a class="nav-current" href="#">H3AD-AI</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner">
+            <a href="https://h3ad-sec.github.io/INSIGHT-AI/" target="_blank" rel="noopener">INSIGHT-AI</a>
+          </div>
+        </div>
+      </div>
       <div class="nav-item">
         <a href="https://h3ad-sec.github.io/H3AD-DETECT/" target="_blank" rel="noopener">H3AD-DETECT</a>
         <div class="nav-dropdown"><div class="nav-dropdown-inner">
@@ -717,6 +738,7 @@
     <a href="https://h3ad-sec.github.io/PARSE-X/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ PARSE-X &nbsp;↗</a>
     <a href="https://h3ad-sec.github.io/DNSCOPE/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ DNSCOPE &nbsp;↗</a>
     <a class="nav-current" href="#" onclick="closeDrawer()">H3AD-AI</a>
+    <a href="https://h3ad-sec.github.io/INSIGHT-AI/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ INSIGHT-AI &nbsp;↗</a>
     <a href="https://h3ad-sec.github.io/H3AD-DETECT/" target="_blank" rel="noopener" onclick="closeDrawer()">H3AD-DETECT
       &nbsp;↗</a>
     <a href="https://h3ad-sec.github.io/TRACERULES/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ TRACERULES ↗</a>
@@ -744,7 +766,7 @@
         <p class="hero-sub">LLM-driven threat intelligence enrichment, automated IOC triage, and AI-assisted detection
           engineering — built for analysts who need signal, not noise.</p>
         <div class="status-row">
-          <span class="badge-cs"><span class="dot-pulse"></span>In Development</span>
+          <span class="badge-cs"><span class="dot-pulse"></span>INSIGHT-AI Live</span>
         </div>
       </section>
 
@@ -754,16 +776,29 @@
           <span class="tbar-label">h3ad@h3ad-ai ~ bash</span>
         </div>
         <div class="terminal-body">
-          <div class="t-line"><span class="prompt">root@h3ad-ai:~$</span><span class="cmd">status</span></div>
-          <div class="t-line gap"><span class="out"><span class="out-acc">H3AD-AI</span><span class="out-dim"> —
-              </span><span class="out-hl">module under active development</span></span></div>
+          <div class="t-line"><span class="prompt">root@h3ad-ai:~$</span><span class="cmd">ls tools/</span></div>
+          <div class="t-line gap"><span class="out"><span class="out-acc">INSIGHT-AI</span><span class="out-dim">&nbsp;&nbsp;[LIVE]&nbsp;&nbsp;</span><span class="out-hl">alert runbook generator · L3/SME · 4 providers</span></span></div>
 
-          <div class="t-line"><span class="prompt">root@h3ad-ai:~$</span><span class="cmd">cat mission.txt</span></div>
-          <div class="t-line gap"><span class="out"><span class="out-hl">Apply large language models to the threat
-                intelligence cycle — from IOC enrichment to detection hypothesis to analyst report.</span></span></div>
+          <div class="t-line"><span class="prompt">root@h3ad-ai:~$</span><span class="cmd">./INSIGHT-AI --info</span></div>
+          <div class="t-line"><span class="out out-dim">sections  &nbsp;: alert_summary · severity · triage · artifacts · TP/FP · analyst_playbook · verdict · queries · MITRE · containment</span></div>
+          <div class="t-line"><span class="out out-dim">providers &nbsp;: Claude · GPT-4o · Gemini · Groq</span></div>
+          <div class="t-line gap"><span class="out out-dim">siem      &nbsp;: KQL · SPL · Sigma · XQL</span></div>
 
           <div class="t-line"><span class="prompt">root@h3ad-ai:~$</span><span class="cursor"></span></div>
         </div>
+      </div>
+
+      <div class="section-label">TOOLS</div>
+
+      <div class="tool-feature">
+        <div class="tf-header">
+          <div class="tf-name">INSIGHT-AI</div>
+          <span class="card-badge badge-live">LIVE</span>
+        </div>
+        <div class="tf-tagline">"From alert to actionable insight."</div>
+        <div class="tf-body">Paste an alert name and context. Get a structured L3-grade runbook in seconds — severity assessment, triage chain, analyst playbook (L1/L2/L3/IR), MITRE sub-technique mapping, DETECT and HUNT queries, and immediate containment actions. Runs entirely in your browser across four AI providers. No backend, no data retention.</div>
+        <div class="tf-meta">10 SECTIONS · 4 PROVIDERS · KQL · SPL · SIGMA · XQL · CLIENT-SIDE ONLY</div>
+        <a class="tf-link" href="https://h3ad-sec.github.io/INSIGHT-AI/" target="_blank" rel="noopener">LAUNCH INSIGHT-AI →</a>
       </div>
 
       <div class="back-link">
