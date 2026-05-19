@@ -318,6 +318,7 @@
 
     .hero {
       padding: 3rem 0 2rem;
+      transition: transform .35s cubic-bezier(.4,0,.2,1), opacity .3s ease;
     }
 
     .hero-tag {
@@ -354,221 +355,37 @@
       max-width: 620px;
     }
 
-    .status-row {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 1.5rem 0 2rem;
-      flex-wrap: wrap;
-    }
+    .hero-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.75rem;}
+    .stat-chip{display:flex;flex-direction:column;padding:10px 16px;background:var(--panel);border:1px solid var(--border);border-radius:4px;min-width:88px;}
+    .stat-val{font-size:1.05rem;color:var(--accent);letter-spacing:0.04em;line-height:1.2;}
+    .stat-label{font-size:0.53rem;letter-spacing:0.18em;color:var(--muted);margin-top:4px;}
 
-    .badge-cs {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 12px;
-      border-radius: 3px;
-      font-size: 0.63rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      background: rgba(77, 148, 255, 0.08);
-      color: var(--accent2);
-      border: 1px solid rgba(77, 148, 255, 0.2);
-    }
-
-    body.light .badge-cs {
-      color: var(--accent2);
-      border-color: rgba(0, 122, 85, 0.25);
-      background: rgba(0, 122, 85, 0.06);
-    }
-
-    .badge-cs .dot-pulse {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: currentColor;
-      animation: pulse 2.2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 1
-      }
-
-      50% {
-        opacity: 0.3
-      }
-    }
-
-    .terminal {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.4);
-      margin-bottom: 2.5rem;
-    }
-
-    body.light .terminal {
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    .terminal-bar {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      padding: 0.7rem 1.1rem;
-      background: var(--panel-alt);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .tbar-dot {
-      width: 11px;
-      height: 11px;
-      border-radius: 50%;
-    }
-
-    .tbar-dot.r {
-      background: #ff5f57;
-    }
-
-    .tbar-dot.y {
-      background: #febc2e;
-    }
-
-    .tbar-dot.g {
-      background: #28c840;
-    }
-
-    .tbar-label {
-      margin-left: auto;
-      font-size: 0.65rem;
-      color: var(--text-dim);
-      letter-spacing: 0.05em;
-      opacity: 0.5;
-    }
-
-    .terminal-body {
-      padding: 1.5rem 2rem;
-    }
-
-    .t-line {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      margin-bottom: 0.45rem;
-    }
-
-    .t-line.gap {
-      margin-bottom: 1.2rem;
-    }
-
-    .t-line:last-child {
-      margin-bottom: 0;
-    }
-
-    .prompt {
-      color: var(--accent);
-      white-space: nowrap;
-      font-size: 0.8rem;
-      margin-right: 0.6rem;
-      user-select: none;
-    }
-
-    .cmd {
-      color: var(--text);
-      font-size: 0.8rem;
-    }
-
-    .out {
-      width: 100%;
-      padding: 0.15rem 0 0.15rem 1.5rem;
-      font-size: 0.76rem;
-    }
-
-    .out-hl {
-      color: var(--text-dim);
-    }
-
-    .out-acc {
-      color: var(--accent);
-    }
-
-    .out-dim {
-      color: var(--muted);
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 8px;
-      height: 14px;
-      background: var(--accent);
-      vertical-align: middle;
-      margin-left: 2px;
-      animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink {
-
-      0%,
-      100% {
-        opacity: 1
-      }
-
-      50% {
-        opacity: 0
-      }
-    }
+    .manifesto-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem 0;margin:2.5rem 0 3rem;}
+    .manifesto-text{font-size:clamp(0.82rem,2vw,1.05rem);color:var(--text);line-height:1.9;letter-spacing:0.02em;}
 
     .section-label {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       letter-spacing: 0.22em;
-      color: var(--muted);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.65rem;
-      margin: 3rem 0 1.8rem;
-    }
-
-    .feat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      background: var(--surface);
-    }
-
-    .feat-card {
-      background: var(--panel);
-      padding: 1.4rem 1.6rem;
-      transition: background 0.15s;
-    }
-
-    .feat-card:hover {
-      background: var(--panel-alt);
-    }
-
-    .feat-icon {
-      font-size: 18px;
-      margin-bottom: 0.75rem;
-    }
-
-    .feat-title {
-      color: var(--accent);
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .feat-desc {
-      color: var(--muted);
-      font-size: 0.73rem;
-      line-height: 1.75;
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
     }
+
+    .approach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:3rem;}
+    .approach-card{background:var(--panel);border:1px solid var(--border);border-radius:4px;padding:20px;display:flex;flex-direction:column;gap:8px;}
+    .ap-num{font-size:0.53rem;letter-spacing:0.25em;color:var(--accent);opacity:0.6;}
+    .ap-title{font-size:0.72rem;letter-spacing:0.1em;color:var(--text);}
+    .ap-desc{font-size:0.64rem;color:var(--muted);line-height:1.65;}
 
     .card-badge { font-size:0.55rem; letter-spacing:0.18em; padding:3px 8px; border-radius:2px; text-transform:uppercase; white-space:nowrap; }
     .badge-live { background:rgba(0,255,159,0.12); color:var(--accent); border:1px solid rgba(0,255,159,0.3); }
@@ -585,45 +402,45 @@
     .tf-link:hover { background:rgba(0,255,159,0.08); }
 
     .back-link {
-      margin-top: 3rem;
-    }
-
-    .back-link a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
       color: var(--muted);
-      font-size: 0.72rem;
-      border-bottom: 1px solid var(--border-dim);
-      transition: color 0.15s, border-color 0.15s;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      transition: 0.15s;
+      margin-bottom: 3rem;
     }
 
-    .back-link a:hover {
+    .back-link:hover {
       color: var(--accent);
-      border-color: var(--accent);
+      border-color: rgba(0, 255, 159, 0.4);
     }
 
     footer {
       position: relative;
       z-index: 1;
-      border-top: 1px solid var(--border-dim);
-      padding: 1.5rem 2.5rem;
+      border-top: 1px solid var(--border);
+      padding: 1.2rem 2rem;
+      max-width: 860px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .footer-left {
+      gap: 10px;
+      font-size: 0.6rem;
       color: var(--muted);
-      font-size: 0.65rem;
-      letter-spacing: 0.06em;
+      flex-wrap: wrap;
     }
 
-    .footer-right {
+    footer a {
       color: var(--accent);
-      font-size: 0.63rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      opacity: 0.45;
+    }
+
+    footer .sep {
+      color: var(--border);
     }
 
     ::-webkit-scrollbar {
@@ -637,6 +454,22 @@
     ::-webkit-scrollbar-thumb {
       background: var(--border);
       border-radius: 2px;
+    }
+
+    #scroll-sentinel{position:absolute;top:0;left:0;width:1px;height:10px;pointer-events:none;}
+    .xv-nav-pill{display:flex;flex-direction:column;align-items:flex-start;gap:1px;margin-left:10px;padding-left:10px;border-left:1px solid var(--border);opacity:0;transform:translateX(-8px);pointer-events:none;transition:opacity .3s ease,transform .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;flex-shrink:0;}
+    .xv-pill-name{font-family:'Share Tech Mono',monospace;font-size:13px;letter-spacing:4px;line-height:1;}
+    .xv-pill-accent{color:var(--accent);}
+    .xv-pill-text{color:var(--text);}
+    .xv-pill-tagline{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:1.5px;}
+    body.hero-hidden .xv-nav-pill{opacity:1;transform:translateX(0);pointer-events:auto;}
+    body.hero-hidden .hero{transform:translateY(-100%);opacity:0;pointer-events:none;}
+    body.hero-hidden .page{padding-top:calc(var(--nav-h) + 20px);}
+    @media(max-width:1000px){
+      .hero{display:none;}
+      .page{padding-top:calc(var(--nav-h)+20px);}
+      body.hero-hidden .page{padding-top:calc(var(--nav-h)+20px);}
+      .xv-nav-pill{opacity:1;transform:none;pointer-events:auto;transition:none;}
     }
 
     @media (max-width: 900px) {
@@ -654,27 +487,37 @@
         padding: calc(var(--nav-h) + 1rem) 1.1rem 4rem;
       }
 
-      .terminal-body {
-        padding: 1.1rem 1.25rem;
-      }
-
       footer {
         padding: 1.2rem 1.25rem;
+      }
+
+      .approach-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-chip {
+        min-width: 72px;
       }
     }
   </style>
 </head>
 
-<body>
+<body class="dark">
+  <div id="scroll-sentinel" aria-hidden="true"></div>
   <canvas id="matrix-canvas"></canvas>
 
   <nav class="nav">
     <div class="hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></div>
-    <div class="nav-brand">
-      <a href="https://h3ad-sec.github.io/"><img id="logoImg" src="https://h3ad-sec.github.io/logo-dark.png"
-          alt="H3AD-SEC"></a>
-    </div>
+    <a class="nav-brand" href="https://h3ad-sec.github.io/">
+      <img id="logoImg" src="https://h3ad-sec.github.io/logo-dark.png" alt="H3AD-SEC">
+    </a>
+    <a class="xv-nav-pill" id="xv-nav-pill" href="https://h3ad-sec.github.io/H3AD-AI/" style="text-decoration:none">
+      <span class="xv-pill-name"><span class="xv-pill-accent">H3AD</span><span class="xv-pill-text">-AI</span></span>
+      <span class="xv-pill-tagline">AI-Powered Threat Analysis.</span>
+    </a>
     <div class="nav-links">
+      <div class="nav-divider"></div>
+      <a href="https://h3ad-sec.github.io/" target="_blank" rel="noopener">HOME</a>
       <div class="nav-divider"></div>
       <a href="https://h3ad-sec.github.io/H3AD/" target="_blank" rel="noopener">H3AD</a>
       <div class="nav-item">
@@ -721,7 +564,7 @@
       <a href="https://h3ad-sec.github.io/H3AD-IR/" target="_blank" rel="noopener">H3AD-IR</a>
       <a href="mailto:h3adsec@gmail.com">CONTACT</a>
     </div>
-    <div class="theme-toggle" onclick="toggleTheme()">
+    <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
       <div class="toggle-track">
         <div class="toggle-thumb"></div>
       </div>
@@ -758,34 +601,21 @@
     <a href="mailto:h3adsec@gmail.com" onclick="closeDrawer()">CONTACT</a>
   </div>
 
-  <main>
-    <div class="page">
-      <section class="hero">
-        <span class="hero-tag">H3AD-SEC · platform module</span>
-        <h1 class="hero-title"><span>H3AD-AI</span> — AI-Powered Threat Analysis</h1>
-        <p class="hero-sub">LLM-driven threat intelligence enrichment, automated IOC triage, and AI-assisted detection
-          engineering — built for analysts who need signal, not noise.</p>
-        <div class="status-row">
-          <span class="badge-cs"><span class="dot-pulse"></span>INSIGHT-AI Live</span>
+  <div class="page">
+      <div class="hero">
+        <span class="hero-tag">H3AD-SEC / AI & DETECTION INTELLIGENCE</span>
+        <h1 class="hero-title">One alert.<br><span>Eight</span> analysis modes.</h1>
+        <p class="hero-sub">Eight analysis modes, four AI providers. Run a full 10-section runbook or target exactly what you need — triage, playbook, FP assessment, detection queries, ATT&CK mapping, artifact extraction, or timeline reconstruction. Select one, several, or all. Your call, in seconds.</p>
+        <div class="hero-stats">
+          <div class="stat-chip"><span class="stat-val">1</span><span class="stat-label">TOOL LIVE</span></div>
+          <div class="stat-chip"><span class="stat-val">4</span><span class="stat-label">AI PROVIDERS</span></div>
+          <div class="stat-chip"><span class="stat-val">8</span><span class="stat-label">ANALYSIS MODES</span></div>
+          <div class="stat-chip"><span class="stat-val">4</span><span class="stat-label">SIEM FORMATS</span></div>
         </div>
-      </section>
+      </div>
 
-      <div class="terminal">
-        <div class="terminal-bar">
-          <span class="tbar-dot r"></span><span class="tbar-dot y"></span><span class="tbar-dot g"></span>
-          <span class="tbar-label">h3ad@h3ad-ai ~ bash</span>
-        </div>
-        <div class="terminal-body">
-          <div class="t-line"><span class="prompt">root@h3ad-ai:~$</span><span class="cmd">ls tools/</span></div>
-          <div class="t-line gap"><span class="out"><span class="out-acc">INSIGHT-AI</span><span class="out-dim">&nbsp;&nbsp;[LIVE]&nbsp;&nbsp;</span><span class="out-hl">alert runbook generator · L3/SME · 4 providers</span></span></div>
-
-          <div class="t-line"><span class="prompt">root@h3ad-ai:~$</span><span class="cmd">./INSIGHT-AI --info</span></div>
-          <div class="t-line"><span class="out out-dim">sections  &nbsp;: alert_summary · severity · triage · artifacts · TP/FP · analyst_playbook · verdict · queries · MITRE · containment</span></div>
-          <div class="t-line"><span class="out out-dim">providers &nbsp;: Claude · GPT-4o · Gemini · Groq</span></div>
-          <div class="t-line gap"><span class="out out-dim">siem      &nbsp;: KQL · SPL · Sigma · XQL</span></div>
-
-          <div class="t-line"><span class="prompt">root@h3ad-ai:~$</span><span class="cursor"></span></div>
-        </div>
+      <div class="manifesto-strip">
+        <p class="manifesto-text">Analysts shouldn't be writing the same runbook<br>for the same alert type for the hundredth time.<br>Pick your mode, paste your alert. That's what AI is for.</p>
       </div>
 
       <div class="section-label">TOOLS</div>
@@ -796,20 +626,42 @@
           <span class="card-badge badge-live">LIVE</span>
         </div>
         <div class="tf-tagline">"From alert to actionable insight."</div>
-        <div class="tf-body">Paste an alert name and context. Get a structured L3-grade runbook in seconds — severity assessment, triage chain, analyst playbook (L1/L2/L3/IR), MITRE sub-technique mapping, DETECT and HUNT queries, and immediate containment actions. Runs entirely in your browser across four AI providers. No backend, no data retention.</div>
-        <div class="tf-meta">10 SECTIONS · 4 PROVIDERS · KQL · SPL · SIGMA · XQL · CLIENT-SIDE ONLY</div>
+        <div class="tf-body">Eight analysis modes, one tool. Run the full 10-section runbook or select only what you need — Triage (severity + investigation chain), Playbook (L1/L2/L3/IR tiers), FP Lens (TP/FP/Benign breakdown + verdict guide), Queries (DETECT and HUNT in your SIEM format), ATT&CK (sub-technique mapping with actor attribution), Artifacts (structured IOC extraction with confidence scoring), and Timeline (chronological event reconstruction). Multi-select any combination. Everything goes directly from your browser to the provider you choose — no H3AD-SEC backend, no retention.</div>
+        <div class="tf-meta">8 MODES · 4 PROVIDERS · KQL · SPL · SIGMA · XQL</div>
         <a class="tf-link" href="https://h3ad-sec.github.io/INSIGHT-AI/" target="_blank" rel="noopener">LAUNCH INSIGHT-AI →</a>
       </div>
 
-      <div class="back-link">
-        <a href="https://h3ad-sec.github.io/">← Back to H3AD-SEC Platform</a>
+      <div class="section-label" style="margin-top:3rem;">THE APPROACH</div>
+
+      <div class="approach-grid">
+        <div class="approach-card">
+          <div class="ap-num">01</div>
+          <div class="ap-title">NO MIDDLEMAN</div>
+          <div class="ap-desc">Your alert goes directly from browser to the LLM provider you choose. No H3AD-SEC backend, no logging, no retention on our end.</div>
+        </div>
+        <div class="approach-card">
+          <div class="ap-num">02</div>
+          <div class="ap-title">L3 QUALITY, L1 SPEED</div>
+          <div class="ap-desc">The output reflects what a senior analyst would write — severity context, triage chain, MITRE sub-techniques — in seconds.</div>
+        </div>
+        <div class="approach-card">
+          <div class="ap-num">03</div>
+          <div class="ap-title">YOUR STACK, YOUR FORMAT</div>
+          <div class="ap-desc">KQL, SPL, Sigma, or XQL. Claude, GPT-4o, Gemini, or Groq. Pick what fits your environment.</div>
+        </div>
       </div>
-    </div>
-  </main>
+
+      <a class="back-link" href="https://h3ad-sec.github.io/">← BACK TO H3AD-SEC</a>
+  </div>
 
   <footer>
-    <span class="footer-left">H3AD-SEC © 2026 &nbsp;|&nbsp; H3AD-AI</span>
-    <span class="footer-right">Intelligence. Detection. Response.</span>
+    <a href="https://h3ad-sec.github.io">H3AD-SEC</a>
+    <span class="sep">/</span>
+    <span>H3AD-AI</span>
+    <span class="sep">//</span>
+    <span>AI-Powered Threat Analysis</span>
+    <span class="sep">//</span>
+    <span>Intelligence. Detection. Response.</span>
   </footer>
 
   <script>
@@ -824,13 +676,16 @@
       if (el) el.src = t === 'light' ? 'https://h3ad-sec.github.io/logo-light.png' : 'https://h3ad-sec.github.io/logo-dark.png';
     }
     function toggleTheme() {
-      document.body.classList.toggle('light');
-      const t = document.body.classList.contains('light') ? 'light' : 'dark';
+      const l = document.body.classList.toggle('light');
+      document.body.classList.toggle('dark', !l);
+      const t = l ? 'light' : 'dark';
       localStorage.setItem('theme', t); setLogo(t);
     }
     const saved = localStorage.getItem('theme');
-    if (saved === 'light') { document.body.classList.add('light'); setLogo('light'); }
-    else setLogo('dark');
+    if (saved === 'light') { document.body.classList.add('light'); document.body.classList.remove('dark'); setLogo('light'); }
+    else { document.body.classList.add('dark'); document.body.classList.remove('light'); setLogo('dark'); }
+
+    (function(){var s=document.getElementById('scroll-sentinel');if(!s)return;new IntersectionObserver(function(e){document.body.classList.toggle('hero-hidden',!e[0].isIntersecting);},{threshold:0}).observe(s);})();
 
     (function () {
       const canvas = document.getElementById('matrix-canvas'), ctx = canvas.getContext('2d');
