@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>H3AD-AI — AI Runbook Engine for Threat Hunters // H3AD-SEC</title>
+  <title>H3AD-AI — AI-Assisted Analysis Hub // H3AD-SEC</title>
   <meta name="description"
-    content="H3AD-AI by H3AD-SEC — eight analysis modes, four AI providers, zero data retention. L3-grade SOC runbooks, triage, playbook, ATT&CK mapping, and detection queries from your browser.">
+    content="H3AD-AI by H3AD-SEC — five purpose-built AI tools for SOC workflows. L3 analyst persona, zero data retention. Runbook generation, detection queries, false positive analysis, ATT&CK mapping, and kill chain timeline reconstruction. Browser-native, no backend.">
   <link rel="icon" href="https://h3ad-sec.github.io/fevicon.png?v=2026" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
@@ -388,6 +388,7 @@
     .manifesto-text{font-size:clamp(0.82rem,2vw,1.05rem);color:var(--text);line-height:1.9;letter-spacing:0.02em;}
 
     .section-label {
+      font-family: 'Share Tech Mono', monospace;
       font-size: 0.6rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
@@ -684,9 +685,9 @@
 
   <div class="page">
       <div class="hero">
-        <span class="hero-tag">AI-ASSISTED ANALYSIS MODULE</span>
-        <h1 class="hero-title">AI That Works Like<br><span>a Senior Analyst.</span></h1>
-        <p class="hero-sub">Five AI tools purpose-built for SOC workflows — runbook generation, detection query crafting, false positive analysis, ATT&CK mapping, and timeline reconstruction. Client-side reasoning, no data stored.</p>
+        <span class="hero-tag">H3AD-SEC · AI-ASSISTED ANALYSIS HUB</span>
+        <h1 class="hero-title">Five AI Tools Built for<br><span>SOC Workflows.</span></h1>
+        <p class="hero-sub">INSIGHT-AI, QUERYCRAFT-AI, FPLENS-AI, ATTMAP-AI, and CHRONO-AI, each purpose-built for a distinct analyst workflow. L3 analyst persona throughout. Client-side execution, no data stored, no account required.</p>
         <div class="hero-chips">
           <span class="hero-chip">ZERO DATA RETENTION</span>
           <span class="hero-chip">BROWSER-NATIVE</span>
@@ -703,7 +704,7 @@
       </div>
 
       <div class="manifesto-strip">
-        <p class="manifesto-text">Analysts shouldn't be writing the same runbook<br>for the same alert type for the hundredth time.<br>Pick your mode. Paste your alert. Get L3 output in seconds.<br><span style="font-size:0.65rem;color:var(--muted);letter-spacing:0.06em;">No backend. No retention. Your API key, your LLM, your runbook.</span></p>
+        <p class="manifesto-text">An analyst shouldn't spend forty minutes writing the same runbook for the same alert type for the hundredth time. Pick the tool. Paste the alert. Get L3-grade output in seconds.<br><span style="font-size:0.65rem;color:var(--muted);letter-spacing:0.06em;">No backend. No retention. Your API key, your LLM, your output.</span></p>
       </div>
 
       <div class="section-label">TOOLS</div>
@@ -732,14 +733,14 @@
           <div class="tf-name">INSIGHT-AI</div>
           <span class="card-badge badge-live">LIVE</span>
         </div>
-        <div class="tf-tagline">"From alert to actionable intelligence."</div>
-        <div class="tf-body">Client-side runbook generator with an L3 analyst persona. Input an alert, get a structured 10-section investigation playbook covering detection context, triage steps, MITRE techniques, recommended queries, escalation criteria, and IR handoff notes.</div>
+        <div class="tf-tagline">AI Runbook Generator · L3 Analyst Persona</div>
+        <div class="tf-body">AI runbook generator with an L3 analyst persona. Produces a structured 10-section investigation playbook from a single alert input.</div>
 
         <div class="mode-grid">
           <div class="mode-cell mode-full">
             <div class="mode-cell-icon">◉</div>
             <div class="mode-cell-name">FULL RUNBOOK</div>
-            <div class="mode-cell-desc">10-section parallel generation — summary through containment</div>
+            <div class="mode-cell-desc">10-section parallel generation, summary through containment</div>
           </div>
           <div class="mode-cell">
             <div class="mode-cell-icon">▶</div>
@@ -779,11 +780,11 @@
         </div>
 
         <div class="cap-list">
-          <div class="cap-item"><span class="cap-dot">◆</span><span>L3 SOC analyst persona — APT hunting depth, precise MITRE sub-techniques (T1059.001 not T1059), DETECT and HUNT query prefixes, forensic artifact specificity with exact event IDs and registry paths</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Strict data discipline — no hallucinated IPs, hashes, or filenames; severity is never inflated; every output element is grounded in your input or omitted entirely</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Multi-select execution — combine any modes; parallel API calls with per-mode skeleton slots and independent per-mode retry on rate limit or failure</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Auto-groups fire when context is present — timeline reconstruction, cross-source correlation, and artifact extraction run automatically alongside the standard sections</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Export in four formats — Markdown, JSON, YAML, plain text — or copy the full runbook to clipboard in one click</span></div>
+          <div class="cap-item"><span class="cap-dot">◆</span><span>L3 SOC analyst persona, APT hunting depth, precise MITRE sub-techniques (T1059.001 not T1059), DETECT and HUNT query prefixes, forensic artifact specificity with exact event IDs and registry paths</span></div>
+          <div class="cap-item"><span class="cap-dot">◆</span><span>Strict data discipline, no hallucinated IPs, hashes, or filenames; severity is never inflated; every output element is grounded in your input or omitted entirely</span></div>
+          <div class="cap-item"><span class="cap-dot">◆</span><span>Multi-select execution, combine any modes; parallel API calls with per-mode skeleton slots and independent per-mode retry on rate limit or failure</span></div>
+          <div class="cap-item"><span class="cap-dot">◆</span><span>Auto-groups fire when context is present, timeline reconstruction, cross-source correlation, and artifact extraction run automatically alongside the standard sections</span></div>
+          <div class="cap-item"><span class="cap-dot">◆</span><span>Export in four formats, Markdown, JSON, YAML, plain text, or copy the full runbook to clipboard in one click</span></div>
         </div>
 
         <div class="provider-strip">
@@ -802,14 +803,8 @@
           <div class="tf-name">QUERYCRAFT-AI</div>
           <span class="card-badge badge-live">LIVE</span>
         </div>
-        <div class="tf-tagline">"Describe the threat. Get the query."</div>
-        <div class="tf-body">AI-assisted detection query builder. Describe what you want to detect in plain language and get a structured KQL, Sigma, or XQL query with MITRE tagging, logic explanation, and tuning notes — ready to deploy or refine.</div>
-        <div class="cap-list">
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Threat-first query generation — describe behavior, not SIEM syntax; translation is handled automatically</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Separate DETECT and HUNT tracks — signature-based detection and proactive hunting pivots per run</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>MITRE ATT&CK coverage matrix — technique IDs with tactic context and confidence scores per query</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>KQL · SPL · Sigma · XQL format selector — all four generated per run, switch format without re-querying</span></div>
-        </div>
+        <div class="tf-tagline">AI Detection Query Builder · KQL · Sigma · XQL</div>
+        <div class="tf-body">Describe what you want to detect in plain language, get a structured KQL, Sigma, or XQL query with MITRE tagging.</div>
         <div class="provider-strip">
           <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
           <span class="prov-tag">GPT-4O (OPENAI)</span>
@@ -826,13 +821,7 @@
           <span class="card-badge badge-live">LIVE</span>
         </div>
         <div class="tf-tagline">"Tune smarter. Detect cleaner."</div>
-        <div class="tf-body">False positive analysis engine. Submit a detection alert and get an AI-driven assessment of why it may be benign — with suppression suggestions, whitelist logic, and notes on what legitimate behavior triggers the rule.</div>
-        <div class="cap-list">
-          <div class="cap-item"><span class="cap-dot">◆</span><span>FP risk scoring — HIGH / MEDIUM / LOW risk level with a full analytical rationale</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Per-scenario FP pattern breakdown — each false positive case listed with the specific signals that trigger it</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>TP signal preservation — distinguishing signals to watch for true positives within FP-prone rules</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Actionable exclusions — concrete exclusion logic in the rule's native format with tuning rationale</span></div>
-        </div>
+        <div class="tf-body">Analyse a detection alert for false positive likelihood. Outputs suppression suggestions and whitelist logic.</div>
         <div class="provider-strip">
           <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
           <span class="prov-tag">GPT-4O (OPENAI)</span>
@@ -849,13 +838,7 @@
           <span class="card-badge badge-live">LIVE</span>
         </div>
         <div class="tf-tagline">"Behavior to ATT&CK. Mapped."</div>
-        <div class="tf-body">MITRE ATT&CK technique mapper. Input an alert description, log snippet, or behavioural indicator and get the most likely technique and sub-technique matches with confidence scores and detection coverage gaps.</div>
-        <div class="cap-list">
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Multi-technique extraction — all relevant ATT&CK techniques with tactic context and per-mapping confidence</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Kill chain stage coverage — stage-by-stage breakdown with summary of evidenced phases</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Detection gap analysis — identifies which mapped techniques lack existing rule coverage</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Hunting pivots — specific investigative angles derived from the technique set and kill chain position</span></div>
-        </div>
+        <div class="tf-body">Map an alert or log snippet to MITRE ATT&CK techniques and sub-techniques with confidence scores.</div>
         <div class="provider-strip">
           <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
           <span class="prov-tag">GPT-4O (OPENAI)</span>
@@ -872,13 +855,7 @@
           <span class="card-badge badge-live">LIVE</span>
         </div>
         <div class="tf-tagline">"From logs to kill chain. Chronologically."</div>
-        <div class="tf-body">AI-powered timeline reconstruction tool. Input a sequence of log events or alert data and get a structured kill chain timeline — ordered by MITRE phase, with lateral movement pivots and persistence indicators flagged.</div>
-        <div class="cap-list">
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Format-agnostic parsing — mixed timestamps, multi-source logs, and varied event formats all accepted</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Per-event stage + MITRE mapping — colored kill chain stage badge and technique ID on every event</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Gap identification — timeline gaps flagged with context about what unlogged activity may have occurred</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Investigation next steps — verb-first actionable steps derived from the reconstructed timeline</span></div>
-        </div>
+        <div class="tf-body">Reconstruct a kill chain timeline from log events, ordered by MITRE phase, with lateral movement and persistence flagged.</div>
         <div class="provider-strip">
           <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
           <span class="prov-tag">GPT-4O (OPENAI)</span>
@@ -900,7 +877,7 @@
         <div class="pillar">
           <div class="pillar-num">02</div>
           <div class="pillar-title">L3 ANALYST GRADE OUTPUT</div>
-          <div class="pillar-desc">The underlying persona is a senior threat hunter — APT campaign experience, malware analysis depth, production SIEM rule authorship, IR for critical infrastructure. The analyst gets L3-quality guidance executable without hand-holding.</div>
+          <div class="pillar-desc">The underlying persona is a senior threat hunter, APT campaign experience, malware analysis depth, production SIEM rule authorship, IR for critical infrastructure. The analyst gets L3-quality guidance executable without hand-holding.</div>
         </div>
         <div class="pillar">
           <div class="pillar-num">03</div>
