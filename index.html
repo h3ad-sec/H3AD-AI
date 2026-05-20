@@ -8,37 +8,49 @@
   <meta name="description"
     content="H3AD-AI by H3AD-SEC — eight analysis modes, four AI providers, zero data retention. L3-grade SOC runbooks, triage, playbook, ATT&CK mapping, and detection queries from your browser.">
   <link rel="icon" href="https://h3ad-sec.github.io/fevicon.png?v=2026" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #06080e;
-      --panel: #0b1018;
-      --panel-alt: #101824;
+      --bg: #080c14;
+      --panel: #0d1117;
+      --panel-alt: #111827;
       --surface: #18253a;
-      --text: #e2eeff;
+      --text: #e6edf3;
       --text-dim: #96b0cc;
-      --muted: #62809c;
+      --muted: #6b7280;
       --muted-dim: #3a5470;
-      --accent: #00ff9f;
-      --accent2: #4d94ff;
-      --border: #1e3050;
-      --border-dim: #121e30;
+      --accent: #00d4ff;
+      --accent2: #58a6ff;
+      --border: #1c2333;
+      --border-dim: #111827;
+      --primary:        #00d4ff;
+      --primary-dim:    rgba(0, 212, 255, 0.08);
+      --primary-glow:   rgba(0, 212, 255, 0.18);
+      --status-live:    #00d4ff;
+      --status-partial: #f59e0b;
+      --status-soon:    #2d3748;
       --nav-h: 48px;
     }
 
     body.light {
-      --bg: #eef2f8;
+      --bg: #f8fafc;
       --panel: #ffffff;
-      --panel-alt: #e4ecf6;
+      --panel-alt: #f1f5f9;
       --surface: #ccd8ec;
-      --text: #060e1c;
+      --text: #0d1117;
       --text-dim: #142540;
-      --muted: #2c4a6a;
+      --muted: #5c6b8a;
       --muted-dim: #5c7a9a;
-      --accent: #004db8;
-      --accent2: #007a55;
-      --border: #a0b8d4;
-      --border-dim: #c8d8ec;
+      --accent: #0284c7;
+      --accent2: #2563eb;
+      --border: #e2e8f0;
+      --border-dim: #f1f5f9;
+      --primary:        #0284c7;
+      --primary-dim:    rgba(2, 132, 199, 0.07);
+      --primary-glow:   rgba(2, 132, 199, 0.14);
+      --status-live:    #0284c7;
+      --status-partial: #d97706;
+      --status-soon:    #cbd5e1;
     }
 
     *,
@@ -56,7 +68,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Share Tech Mono', monospace;
+      font-family: 'Exo 2', sans-serif;
       font-size: 14px;
       line-height: 1.6;
       min-height: 100vh;
@@ -64,24 +76,25 @@
       transition: background 0.3s, color 0.3s;
     }
 
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 45% at 50% 0%, rgba(0, 212, 255, 0.055) 0%, transparent 100%),
+        radial-gradient(ellipse 50% 35% at 5% 100%, rgba(88, 166, 255, 0.04) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body.light::before {
+      background:
+        radial-gradient(ellipse 80% 45% at 50% 0%, rgba(2, 132, 199, 0.05) 0%, transparent 100%),
+        radial-gradient(ellipse 50% 35% at 5% 100%, rgba(37, 99, 235, 0.03) 0%, transparent 100%);
+    }
+
     a {
       color: inherit;
       text-decoration: none;
-    }
-
-    #matrix-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.18;
-    }
-
-    body.light #matrix-canvas {
-      opacity: 0.10;
     }
 
     .nav {
@@ -125,6 +138,8 @@
     }
 
     .nav-links a {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 500;
       font-size: 0.68rem;
       color: var(--muted);
       padding: 5px 9px;
@@ -138,21 +153,21 @@
     .nav-links a:hover {
       color: var(--accent);
       border-color: var(--border);
-      background: rgba(0, 255, 159, 0.05);
+      background: rgba(0, 212, 255, 0.05);
     }
 
     body.light .nav-links a:hover {
-      background: rgba(0, 77, 184, 0.07);
+      background: rgba(2, 132, 199, 0.07);
     }
 
     .nav-links a.nav-current {
       color: var(--accent);
       border-color: var(--accent);
-      background: rgba(0, 255, 159, 0.06);
+      background: rgba(0, 212, 255, 0.06);
     }
 
     body.light .nav-links a.nav-current {
-      background: rgba(0, 77, 184, 0.07);
+      background: rgba(2, 132, 199, 0.07);
     }
 
     .nav-links a:last-child {
@@ -196,6 +211,8 @@
     }
 
     .nav-links .nav-dropdown a {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 400;
       display: block;
       padding: 7px 12px;
       font-size: 0.65rem;
@@ -209,7 +226,7 @@
     .nav-links .nav-dropdown a:hover {
       color: var(--accent);
       border-left-color: var(--accent);
-      background: rgba(0, 255, 159, 0.04);
+      background: rgba(0, 212, 255, 0.04);
     }
 
     .theme-toggle {
@@ -283,6 +300,8 @@
     }
 
     .nav-drawer a {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 500;
       font-size: 0.75rem;
       color: var(--text-dim);
       padding: 8px 10px;
@@ -294,7 +313,7 @@
     .nav-drawer a:hover {
       color: var(--accent);
       border-left-color: var(--accent);
-      background: rgba(0, 255, 159, 0.04);
+      background: rgba(0, 212, 255, 0.04);
     }
 
     .nav-drawer a.nav-current {
@@ -322,6 +341,7 @@
     }
 
     .hero-tag {
+      font-family: 'Share Tech Mono', monospace;
       font-size: 0.6rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
@@ -332,6 +352,8 @@
     }
 
     .hero-title {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 700;
       font-size: clamp(1.4rem, 4vw, 2.6rem);
       color: var(--text);
       letter-spacing: 0.04em;
@@ -341,14 +363,16 @@
 
     .hero-title span {
       color: var(--accent);
-      text-shadow: 0 0 32px rgba(0, 255, 159, 0.4);
+      text-shadow: 0 0 32px rgba(0, 212, 255, 0.4);
     }
 
     body.light .hero-title span {
-      text-shadow: 0 0 24px rgba(0, 77, 184, 0.35);
+      text-shadow: 0 0 24px rgba(2, 132, 199, 0.35);
     }
 
     .hero-sub {
+      font-family: 'Exo 2', sans-serif;
+      font-weight: 300;
       font-size: 0.74rem;
       color: var(--text-dim);
       line-height: 1.9;
@@ -357,7 +381,7 @@
 
     .hero-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.75rem;}
     .stat-chip{display:flex;flex-direction:column;padding:10px 16px;background:var(--panel);border:1px solid var(--border);border-radius:4px;min-width:88px;}
-    .stat-val{font-size:1.05rem;color:var(--accent);letter-spacing:0.04em;line-height:1.2;}
+    .stat-val{font-family:'Exo 2',sans-serif;font-weight:700;font-size:1.05rem;color:var(--accent);letter-spacing:0.04em;line-height:1.2;}
     .stat-label{font-size:0.53rem;letter-spacing:0.18em;color:var(--muted);margin-top:4px;}
 
     .manifesto-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem 0;margin:2.5rem 0 3rem;}
@@ -388,18 +412,18 @@
     .ap-desc{font-size:0.64rem;color:var(--muted);line-height:1.65;}
 
     .card-badge { font-size:0.55rem; letter-spacing:0.18em; padding:3px 8px; border-radius:2px; text-transform:uppercase; white-space:nowrap; }
-    .badge-live { background:rgba(0,255,159,0.12); color:var(--accent); border:1px solid rgba(0,255,159,0.3); }
+    .badge-live { background:rgba(0, 212, 255, 0.1); color:#00d4ff; border:1px solid rgba(0, 212, 255, 0.25); }
     .badge-soon { background:rgba(98,128,156,0.12); color:var(--muted); border:1px solid var(--border); }
     .tool-feature { background:var(--panel); border:1px solid var(--border); border-radius:6px; padding:28px 28px 22px; margin-bottom:14px; display:flex; flex-direction:column; gap:12px; position:relative; overflow:hidden; transition:border-color 0.2s,background 0.2s; }
     .tool-feature::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:0.55; }
-    .tool-feature:hover { border-color:rgba(0,255,159,0.35); background:rgba(0,255,159,0.02); }
+    .tool-feature:hover { border-color:rgba(0,212,255,0.35); background:rgba(0,212,255,0.02); }
     .tf-header { display:flex; align-items:center; justify-content:space-between; gap:8px; }
-    .tf-name { font-size:1rem; letter-spacing:0.14em; color:var(--text); }
-    .tf-tagline { font-size:0.8rem; color:var(--accent); letter-spacing:0.03em; }
-    .tf-body { font-size:0.71rem; color:var(--text-dim); line-height:1.8; max-width:600px; }
-    .tf-meta { font-size:0.57rem; letter-spacing:0.2em; color:var(--muted); border-top:1px solid var(--border-dim); padding-top:10px; margin-top:2px; }
-    .tf-link { display:inline-flex; align-items:center; gap:6px; font-size:0.63rem; letter-spacing:0.14em; color:var(--accent); padding:7px 14px; border:1px solid rgba(0,255,159,0.3); border-radius:3px; transition:0.15s; align-self:flex-start; margin-top:2px; }
-    .tf-link:hover { background:rgba(0,255,159,0.08); }
+    .tf-name { font-family:'Exo 2',sans-serif; font-weight:700; font-size:1rem; letter-spacing:0.14em; color:var(--text); }
+    .tf-tagline { font-family:'Exo 2',sans-serif; font-weight:300; font-size:0.8rem; color:var(--accent); letter-spacing:0.03em; }
+    .tf-body { font-family:'Exo 2',sans-serif; font-weight:400; font-size:0.71rem; color:var(--text-dim); line-height:1.8; max-width:600px; }
+    .tf-meta { font-family:'Share Tech Mono',monospace; font-size:0.57rem; letter-spacing:0.2em; color:var(--muted); border-top:1px solid var(--border-dim); padding-top:10px; margin-top:2px; }
+    .tf-link { font-family:'Exo 2',sans-serif; font-weight:600; display:inline-flex; align-items:center; gap:6px; font-size:0.63rem; letter-spacing:0.14em; color:var(--accent); padding:7px 14px; border:1px solid rgba(0,212,255,0.3); border-radius:3px; transition:0.15s; align-self:flex-start; margin-top:2px; }
+    .tf-link:hover { background:rgba(0,212,255,0.08); }
 
     .back-link {
       display: inline-flex;
@@ -417,7 +441,7 @@
 
     .back-link:hover {
       color: var(--accent);
-      border-color: rgba(0, 255, 159, 0.4);
+      border-color: rgba(0, 212, 255, 0.4);
     }
 
     footer {
@@ -458,10 +482,10 @@
 
     #scroll-sentinel{position:absolute;top:0;left:0;width:1px;height:10px;pointer-events:none;}
     .xv-nav-pill{display:flex;flex-direction:column;align-items:flex-start;gap:1px;margin-left:10px;padding-left:10px;border-left:1px solid var(--border);opacity:0;transform:translateX(-8px);pointer-events:none;transition:opacity .3s ease,transform .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;flex-shrink:0;}
-    .xv-pill-name{font-family:'Share Tech Mono',monospace;font-size:13px;letter-spacing:4px;line-height:1;}
+    .xv-pill-name{font-family:'Exo 2',sans-serif;font-weight:700;font-size:13px;letter-spacing:4px;line-height:1;}
     .xv-pill-accent{color:var(--accent);}
     .xv-pill-text{color:var(--text);}
-    .xv-pill-tagline{font-family:'Share Tech Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:1.5px;}
+    .xv-pill-tagline{font-family:'Exo 2',sans-serif;font-weight:400;font-size:8px;color:var(--muted);letter-spacing:1.5px;}
     body.hero-hidden .xv-nav-pill{opacity:1;transform:translateX(0);pointer-events:auto;}
     body.hero-hidden .hero{transform:translateY(-100%);opacity:0;pointer-events:none;}
     body.hero-hidden .page{padding-top:calc(var(--nav-h) + 20px);}
@@ -508,13 +532,27 @@
     .mode-cell{background:var(--panel);padding:14px 14px 12px;display:flex;flex-direction:column;gap:4px;transition:background 0.15s;}
     .mode-cell:hover{background:var(--panel-alt);}
     .mode-cell-icon{font-size:0.85rem;color:var(--accent);opacity:0.75;margin-bottom:2px;}
-    .mode-cell-name{font-size:0.62rem;letter-spacing:0.12em;color:var(--text);}
-    .mode-cell-desc{font-size:0.56rem;color:var(--muted);line-height:1.55;}
+    .mode-cell .mc-name,.mode-cell-name{font-family:'Exo 2',sans-serif;font-weight:600;font-size:0.62rem;letter-spacing:0.12em;color:var(--text);}
+    .mode-cell .mc-desc,.mode-cell-desc{font-family:'Exo 2',sans-serif;font-weight:400;font-size:0.56rem;color:var(--muted);line-height:1.55;}
     .mode-cell.mode-full{border-left:2px solid var(--accent);}
 
     .cap-list{display:flex;flex-direction:column;gap:6px;margin:1.5rem 0 0;}
     .cap-item{display:flex;align-items:baseline;gap:9px;font-size:0.65rem;color:var(--text-dim);line-height:1.6;}
     .cap-dot{color:var(--accent);flex-shrink:0;font-size:0.5rem;}
+
+    .cap-strip {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px; background: var(--border); border: 1px solid var(--border);
+      border-radius: 6px; overflow: hidden; margin-bottom: 2.5rem;
+    }
+    .cap-strip .cap-item {
+      background: var(--panel); padding: 14px 18px;
+      display: flex; flex-direction: column; gap: 5px;
+      align-items: flex-start; font-size: unset; color: unset; line-height: unset;
+    }
+    .cap-label { font-family: 'Share Tech Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+    .cap-value { font-family: 'Exo 2', sans-serif; font-weight: 600; font-size: 0.75rem; color: var(--text); letter-spacing: 0.04em; }
+    .cap-value span { color: var(--accent); }
 
     .provider-strip{display:flex;gap:6px;flex-wrap:wrap;margin-top:1.25rem;}
     .prov-tag{font-size:0.54rem;letter-spacing:0.16em;color:var(--muted);border:1px solid var(--border);border-radius:2px;padding:4px 10px;}
@@ -540,7 +578,6 @@
 
 <body class="dark">
   <div id="scroll-sentinel" aria-hidden="true"></div>
-  <canvas id="matrix-canvas"></canvas>
 
   <nav class="nav">
     <div class="hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></div>
@@ -647,9 +684,9 @@
 
   <div class="page">
       <div class="hero">
-        <span class="hero-tag">H3AD-SEC / AI-POWERED SOC INTELLIGENCE PLATFORM</span>
-        <h1 class="hero-title">The AI runbook engine<br>built for <span>threat hunters.</span></h1>
-        <p class="hero-sub">Five purpose-built AI tools for detection engineers and incident responders. Four AI providers. Zero data retention. From alert triage and runbook generation to query crafting, FP analysis, ATT&CK mapping, and timeline reconstruction — L3-grade analysis directly from your browser.</p>
+        <span class="hero-tag">AI-ASSISTED ANALYSIS MODULE</span>
+        <h1 class="hero-title">AI That Works Like<br><span>a Senior Analyst.</span></h1>
+        <p class="hero-sub">Five AI tools purpose-built for SOC workflows — runbook generation, detection query crafting, false positive analysis, ATT&CK mapping, and timeline reconstruction. Client-side reasoning, no data stored.</p>
         <div class="hero-chips">
           <span class="hero-chip">ZERO DATA RETENTION</span>
           <span class="hero-chip">BROWSER-NATIVE</span>
@@ -671,13 +708,32 @@
 
       <div class="section-label">TOOLS</div>
 
+      <div class="cap-strip">
+        <div class="cap-item">
+          <span class="cap-label">AI Tools</span>
+          <span class="cap-value"><span>5</span> Tools Live</span>
+        </div>
+        <div class="cap-item">
+          <span class="cap-label">Use Cases</span>
+          <span class="cap-value">SOC <span>Workflows</span></span>
+        </div>
+        <div class="cap-item">
+          <span class="cap-label">Persona</span>
+          <span class="cap-value">L3 <span>Analyst</span></span>
+        </div>
+        <div class="cap-item">
+          <span class="cap-label">Privacy</span>
+          <span class="cap-value">No Data <span>Stored</span></span>
+        </div>
+      </div>
+
       <div class="tool-feature">
         <div class="tf-header">
           <div class="tf-name">INSIGHT-AI</div>
           <span class="card-badge badge-live">LIVE</span>
         </div>
         <div class="tf-tagline">"From alert to actionable intelligence."</div>
-        <div class="tf-body">Structured SOC runbook generation with precision-targeted analysis modes. Select one mode or combine multiple — the tool fires parallel API calls and fills each slot as results arrive. Every prompt enforces strict data discipline: no hallucinated artifacts, no generic filler steps, only analysis grounded in your input.</div>
+        <div class="tf-body">Client-side runbook generator with an L3 analyst persona. Input an alert, get a structured 10-section investigation playbook covering detection context, triage steps, MITRE techniques, recommended queries, escalation criteria, and IR handoff notes.</div>
 
         <div class="mode-grid">
           <div class="mode-cell mode-full">
@@ -747,7 +803,7 @@
           <span class="card-badge badge-live">LIVE</span>
         </div>
         <div class="tf-tagline">"Describe the threat. Get the query."</div>
-        <div class="tf-body">Converts a threat description into structured detection and hunting queries across KQL, SPL, Sigma, and XQL. One input — four SIEM formats, parallel AI generation, each query paired with a purpose annotation and MITRE technique mapping. No more context-switching between detection languages.</div>
+        <div class="tf-body">AI-assisted detection query builder. Describe what you want to detect in plain language and get a structured KQL, Sigma, or XQL query with MITRE tagging, logic explanation, and tuning notes — ready to deploy or refine.</div>
         <div class="cap-list">
           <div class="cap-item"><span class="cap-dot">◆</span><span>Threat-first query generation — describe behavior, not SIEM syntax; translation is handled automatically</span></div>
           <div class="cap-item"><span class="cap-dot">◆</span><span>Separate DETECT and HUNT tracks — signature-based detection and proactive hunting pivots per run</span></div>
@@ -770,7 +826,7 @@
           <span class="card-badge badge-live">LIVE</span>
         </div>
         <div class="tf-tagline">"Tune smarter. Detect cleaner."</div>
-        <div class="tf-body">Paste any detection rule and get a structured false positive risk assessment. Identifies FP patterns with per-scenario signal breakdowns, surfaces TP signals to preserve detection fidelity, and generates specific exclusion logic and tuning guidance grounded in the rule's actual syntax — not generic advice.</div>
+        <div class="tf-body">False positive analysis engine. Submit a detection alert and get an AI-driven assessment of why it may be benign — with suppression suggestions, whitelist logic, and notes on what legitimate behavior triggers the rule.</div>
         <div class="cap-list">
           <div class="cap-item"><span class="cap-dot">◆</span><span>FP risk scoring — HIGH / MEDIUM / LOW risk level with a full analytical rationale</span></div>
           <div class="cap-item"><span class="cap-dot">◆</span><span>Per-scenario FP pattern breakdown — each false positive case listed with the specific signals that trigger it</span></div>
@@ -793,7 +849,7 @@
           <span class="card-badge badge-live">LIVE</span>
         </div>
         <div class="tf-tagline">"Behavior to ATT&CK. Mapped."</div>
-        <div class="tf-body">Describe observed behavior — a process chain, a log sequence, an analyst note — and get structured ATT&CK technique mappings with confidence scoring. Includes kill chain stage positioning, detection coverage gap analysis, and hunting pivots derived directly from the mapped technique set.</div>
+        <div class="tf-body">MITRE ATT&CK technique mapper. Input an alert description, log snippet, or behavioural indicator and get the most likely technique and sub-technique matches with confidence scores and detection coverage gaps.</div>
         <div class="cap-list">
           <div class="cap-item"><span class="cap-dot">◆</span><span>Multi-technique extraction — all relevant ATT&CK techniques with tactic context and per-mapping confidence</span></div>
           <div class="cap-item"><span class="cap-dot">◆</span><span>Kill chain stage coverage — stage-by-stage breakdown with summary of evidenced phases</span></div>
@@ -816,7 +872,7 @@
           <span class="card-badge badge-live">LIVE</span>
         </div>
         <div class="tf-tagline">"From logs to kill chain. Chronologically."</div>
-        <div class="tf-body">Paste raw log events in any format — Sysmon, EDR telemetry, firewall logs, mixed sources — and get a structured kill-chain timeline. Each event is mapped to a kill chain stage and MITRE technique, with significance annotations, timeline gap identification, and investigation-ready next steps.</div>
+        <div class="tf-body">AI-powered timeline reconstruction tool. Input a sequence of log events or alert data and get a structured kill chain timeline — ordered by MITRE phase, with lateral movement pivots and persistence indicators flagged.</div>
         <div class="cap-list">
           <div class="cap-item"><span class="cap-dot">◆</span><span>Format-agnostic parsing — mixed timestamps, multi-source logs, and varied event formats all accepted</span></div>
           <div class="cap-item"><span class="cap-dot">◆</span><span>Per-event stage + MITRE mapping — colored kill chain stage badge and technique ID on every event</span></div>
@@ -913,30 +969,6 @@
     else { document.body.classList.add('dark'); document.body.classList.remove('light'); setLogo('dark'); }
 
     (function(){var s=document.getElementById('scroll-sentinel');if(!s)return;new IntersectionObserver(function(e){document.body.classList.toggle('hero-hidden',!e[0].isIntersecting);},{threshold:0}).observe(s);})();
-
-    (function () {
-      const canvas = document.getElementById('matrix-canvas'), ctx = canvas.getContext('2d');
-      const chars = ['AI', 'LLM', 'GPT', 'RAG', 'NLP', 'Embed', 'Token', 'Prompt', 'Chain', 'Agent',
-        'IOC', 'TTP', 'ATT&CK', 'Sigma', 'YARA', 'Hunt', 'Intel', 'Enrich', 'Triage', 'Score',
-        'T1059', 'T1047', 'T1566', 'T1071', 'T1003', 'T1055', 'T1082', 'T1105',
-        'SHA256', 'MD5', 'IP', 'Domain', 'URL', 'Hash', 'Pulse', 'Feed',
-        'Detect', 'Alert', 'Block', 'SIEM', 'EDR', 'XDR', 'Telemetry'];
-      let drops = [];
-      function init() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; drops = Array(Math.floor(window.innerWidth / 18)).fill(1); }
-      function draw() {
-        const light = document.body.classList.contains('light');
-        ctx.fillStyle = light ? 'rgba(238,242,248,0.1)' : 'rgba(6,8,14,0.14)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = light ? '#004db8' : '#00ff9f';
-        ctx.font = '12px monospace';
-        for (let i = 0; i < drops.length; i++) {
-          ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * 18, drops[i] * 18);
-          if (drops[i] * 18 > canvas.height && Math.random() > 0.975) drops[i] = 0;
-          drops[i]++;
-        }
-      }
-      window.addEventListener('resize', init); init(); setInterval(draw, 45);
-    })();
   </script>
 </body>
 
