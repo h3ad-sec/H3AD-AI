@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>H3AD-AI - AI-Powered Threat Analysis // H3AD-SEC</title>
+  <title>H3AD-AI — AI Runbook Engine for Threat Hunters // H3AD-SEC</title>
   <meta name="description"
-    content="H3AD-AI by H3AD-SEC - AI-powered threat intelligence analysis, automated triage, and LLM-driven detection engineering. Coming soon.">
+    content="H3AD-AI by H3AD-SEC — eight analysis modes, four AI providers, zero data retention. L3-grade SOC runbooks, triage, playbook, ATT&CK mapping, and detection queries from your browser.">
   <link rel="icon" href="https://h3ad-sec.github.io/fevicon.png?v=2026" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
@@ -499,6 +499,42 @@
         min-width: 72px;
       }
     }
+
+    /* ── Enterprise additions ───────────────────────────────────────── */
+    .hero-chips{display:flex;flex-wrap:wrap;gap:5px;margin:1.5rem 0 1.75rem;}
+    .hero-chip{font-size:0.52rem;letter-spacing:0.22em;color:var(--muted);border:1px solid var(--border-dim);border-radius:2px;padding:3px 9px;white-space:nowrap;}
+
+    .mode-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin:1.5rem 0 0;}
+    .mode-cell{background:var(--panel);padding:14px 14px 12px;display:flex;flex-direction:column;gap:4px;transition:background 0.15s;}
+    .mode-cell:hover{background:var(--panel-alt);}
+    .mode-cell-icon{font-size:0.85rem;color:var(--accent);opacity:0.75;margin-bottom:2px;}
+    .mode-cell-name{font-size:0.62rem;letter-spacing:0.12em;color:var(--text);}
+    .mode-cell-desc{font-size:0.56rem;color:var(--muted);line-height:1.55;}
+    .mode-cell.mode-full{border-left:2px solid var(--accent);}
+
+    .cap-list{display:flex;flex-direction:column;gap:6px;margin:1.5rem 0 0;}
+    .cap-item{display:flex;align-items:baseline;gap:9px;font-size:0.65rem;color:var(--text-dim);line-height:1.6;}
+    .cap-dot{color:var(--accent);flex-shrink:0;font-size:0.5rem;}
+
+    .provider-strip{display:flex;gap:6px;flex-wrap:wrap;margin-top:1.25rem;}
+    .prov-tag{font-size:0.54rem;letter-spacing:0.16em;color:var(--muted);border:1px solid var(--border);border-radius:2px;padding:4px 10px;}
+
+    .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:3rem;}
+    .pillar{background:var(--panel);padding:24px 20px;}
+    .pillar-num{font-size:0.5rem;letter-spacing:0.28em;color:var(--accent);opacity:0.55;margin-bottom:12px;}
+    .pillar-title{font-size:0.68rem;letter-spacing:0.14em;color:var(--text);margin-bottom:8px;}
+    .pillar-desc{font-size:0.62rem;color:var(--muted);line-height:1.75;}
+
+    .compliance-row{display:flex;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:3rem;}
+    .compliance-cell{background:var(--panel);padding:14px 18px;flex:1;display:flex;flex-direction:column;gap:5px;}
+    .compliance-val{font-size:0.72rem;color:var(--text);letter-spacing:0.06em;}
+    .compliance-label{font-size:0.52rem;letter-spacing:0.18em;color:var(--muted);}
+
+    @media(max-width:700px){
+      .mode-grid{grid-template-columns:repeat(2,1fr);}
+      .pillars{grid-template-columns:1fr;}
+      .compliance-row{flex-direction:column;}
+    }
   </style>
 </head>
 
@@ -603,19 +639,26 @@
 
   <div class="page">
       <div class="hero">
-        <span class="hero-tag">H3AD-SEC / AI & DETECTION INTELLIGENCE</span>
-        <h1 class="hero-title">One alert.<br><span>Eight</span> analysis modes.</h1>
-        <p class="hero-sub">Eight analysis modes, four AI providers. Run a full 10-section runbook or target exactly what you need — triage, playbook, FP assessment, detection queries, ATT&CK mapping, artifact extraction, or timeline reconstruction. Select one, several, or all. Your call, in seconds.</p>
+        <span class="hero-tag">H3AD-SEC / AI-POWERED SOC INTELLIGENCE PLATFORM</span>
+        <h1 class="hero-title">The AI runbook engine<br>built for <span>threat hunters.</span></h1>
+        <p class="hero-sub">Eight analysis modes. Four AI providers. Zero data retention. Paste an alert — get L3-grade severity, triage chain, tiered playbook, sub-technique mapping, DETECT and HUNT queries, and containment actions. In seconds, directly from your browser.</p>
+        <div class="hero-chips">
+          <span class="hero-chip">ZERO DATA RETENTION</span>
+          <span class="hero-chip">BROWSER-NATIVE</span>
+          <span class="hero-chip">MULTI-SELECT MODES</span>
+          <span class="hero-chip">PARALLEL EXECUTION</span>
+          <span class="hero-chip">NO ACCOUNT REQUIRED</span>
+        </div>
         <div class="hero-stats">
-          <div class="stat-chip"><span class="stat-val">1</span><span class="stat-label">TOOL LIVE</span></div>
-          <div class="stat-chip"><span class="stat-val">4</span><span class="stat-label">AI PROVIDERS</span></div>
           <div class="stat-chip"><span class="stat-val">8</span><span class="stat-label">ANALYSIS MODES</span></div>
+          <div class="stat-chip"><span class="stat-val">4</span><span class="stat-label">AI PROVIDERS</span></div>
+          <div class="stat-chip"><span class="stat-val">10</span><span class="stat-label">RUNBOOK SECTIONS</span></div>
           <div class="stat-chip"><span class="stat-val">4</span><span class="stat-label">SIEM FORMATS</span></div>
         </div>
       </div>
 
       <div class="manifesto-strip">
-        <p class="manifesto-text">Analysts shouldn't be writing the same runbook<br>for the same alert type for the hundredth time.<br>Pick your mode, paste your alert. That's what AI is for.</p>
+        <p class="manifesto-text">Analysts shouldn't be writing the same runbook<br>for the same alert type for the hundredth time.<br>Pick your mode. Paste your alert. Get L3 output in seconds.<br><span style="font-size:0.65rem;color:var(--muted);letter-spacing:0.06em;">No backend. No retention. Your API key, your LLM, your runbook.</span></p>
       </div>
 
       <div class="section-label">TOOLS</div>
@@ -625,29 +668,113 @@
           <div class="tf-name">INSIGHT-AI</div>
           <span class="card-badge badge-live">LIVE</span>
         </div>
-        <div class="tf-tagline">"From alert to actionable insight."</div>
-        <div class="tf-body">Eight analysis modes, one tool. Run the full 10-section runbook or select only what you need — Triage (severity + investigation chain), Playbook (L1/L2/L3/IR tiers), FP Lens (TP/FP/Benign breakdown + verdict guide), Queries (DETECT and HUNT in your SIEM format), ATT&CK (sub-technique mapping with actor attribution), Artifacts (structured IOC extraction with confidence scoring), and Timeline (chronological event reconstruction). Multi-select any combination. Everything goes directly from your browser to the provider you choose — no H3AD-SEC backend, no retention.</div>
-        <div class="tf-meta">8 MODES · 4 PROVIDERS · KQL · SPL · SIGMA · XQL</div>
+        <div class="tf-tagline">"From alert to actionable intelligence."</div>
+        <div class="tf-body">Structured SOC runbook generation with precision-targeted analysis modes. Select one mode or combine multiple — the tool fires parallel API calls and fills each slot as results arrive. Every prompt enforces strict data discipline: no hallucinated artifacts, no generic filler steps, only analysis grounded in your input.</div>
+
+        <div class="mode-grid">
+          <div class="mode-cell mode-full">
+            <div class="mode-cell-icon">◉</div>
+            <div class="mode-cell-name">FULL RUNBOOK</div>
+            <div class="mode-cell-desc">10-section parallel generation — summary through containment</div>
+          </div>
+          <div class="mode-cell">
+            <div class="mode-cell-icon">▶</div>
+            <div class="mode-cell-name">TRIAGE</div>
+            <div class="mode-cell-desc">Severity badge + ordered L3 investigation chain</div>
+          </div>
+          <div class="mode-cell">
+            <div class="mode-cell-icon">◱</div>
+            <div class="mode-cell-name">PLAYBOOK</div>
+            <div class="mode-cell-desc">L1 / L2 / L3 / IR tiered response steps</div>
+          </div>
+          <div class="mode-cell">
+            <div class="mode-cell-icon">○</div>
+            <div class="mode-cell-name">FP LENS</div>
+            <div class="mode-cell-desc">TP / FP / Benign breakdown with verdict guide</div>
+          </div>
+          <div class="mode-cell">
+            <div class="mode-cell-icon">⌕</div>
+            <div class="mode-cell-name">QUERIES</div>
+            <div class="mode-cell-desc">DETECT and HUNT queries in your SIEM format</div>
+          </div>
+          <div class="mode-cell">
+            <div class="mode-cell-icon">◇</div>
+            <div class="mode-cell-name">ATT&amp;CK</div>
+            <div class="mode-cell-desc">Sub-technique mapping with actor attribution</div>
+          </div>
+          <div class="mode-cell">
+            <div class="mode-cell-icon">◈</div>
+            <div class="mode-cell-name">ARTIFACTS</div>
+            <div class="mode-cell-desc">Structured IOC extraction with confidence scoring</div>
+          </div>
+          <div class="mode-cell">
+            <div class="mode-cell-icon">⏱</div>
+            <div class="mode-cell-name">TIMELINE</div>
+            <div class="mode-cell-desc">Chronological event reconstruction from raw logs</div>
+          </div>
+        </div>
+
+        <div class="cap-list">
+          <div class="cap-item"><span class="cap-dot">◆</span><span>L3 SOC analyst persona — APT hunting depth, precise MITRE sub-techniques (T1059.001 not T1059), DETECT and HUNT query prefixes, forensic artifact specificity with exact event IDs and registry paths</span></div>
+          <div class="cap-item"><span class="cap-dot">◆</span><span>Strict data discipline — no hallucinated IPs, hashes, or filenames; severity is never inflated; every output element is grounded in your input or omitted entirely</span></div>
+          <div class="cap-item"><span class="cap-dot">◆</span><span>Multi-select execution — combine any modes; parallel API calls with per-mode skeleton slots and independent per-mode retry on rate limit or failure</span></div>
+          <div class="cap-item"><span class="cap-dot">◆</span><span>Auto-groups fire when context is present — timeline reconstruction, cross-source correlation, and artifact extraction run automatically alongside the standard sections</span></div>
+          <div class="cap-item"><span class="cap-dot">◆</span><span>Export in four formats — Markdown, JSON, YAML, plain text — or copy the full runbook to clipboard in one click</span></div>
+        </div>
+
+        <div class="provider-strip">
+          <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
+          <span class="prov-tag">GPT-4O (OPENAI)</span>
+          <span class="prov-tag">GEMINI FLASH (GOOGLE)</span>
+          <span class="prov-tag">LLAMA 3.3 (GROQ)</span>
+        </div>
+
+        <div class="tf-meta" style="margin-top:1.25rem;">8 MODES · 4 PROVIDERS · KQL · SPL · SIGMA · XQL · EXPORT MD / JSON / YAML / TXT</div>
         <a class="tf-link" href="https://h3ad-sec.github.io/INSIGHT-AI/" target="_blank" rel="noopener">LAUNCH INSIGHT-AI →</a>
       </div>
 
-      <div class="section-label" style="margin-top:3rem;">THE APPROACH</div>
+      <div class="section-label" style="margin-top:3rem;">BUILT FOR SECURITY TEAMS</div>
 
-      <div class="approach-grid">
-        <div class="approach-card">
-          <div class="ap-num">01</div>
-          <div class="ap-title">NO MIDDLEMAN</div>
-          <div class="ap-desc">Your alert goes directly from browser to the LLM provider you choose. No H3AD-SEC backend, no logging, no retention on our end.</div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <div class="pillar-title">ZERO DATA FOOTPRINT</div>
+          <div class="pillar-desc">Your alert travels directly from browser to the LLM provider you choose. No H3AD-SEC backend, no logging, no retention. API keys live in localStorage and never leave your machine. Safe for sensitive alert context.</div>
         </div>
-        <div class="approach-card">
-          <div class="ap-num">02</div>
-          <div class="ap-title">L3 QUALITY, L1 SPEED</div>
-          <div class="ap-desc">The output reflects what a senior analyst would write — severity context, triage chain, MITRE sub-techniques — in seconds.</div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <div class="pillar-title">L3 ANALYST GRADE OUTPUT</div>
+          <div class="pillar-desc">The underlying persona is a senior threat hunter — APT campaign experience, malware analysis depth, production SIEM rule authorship, IR for critical infrastructure. The analyst gets L3-quality guidance executable without hand-holding.</div>
         </div>
-        <div class="approach-card">
-          <div class="ap-num">03</div>
-          <div class="ap-title">YOUR STACK, YOUR FORMAT</div>
-          <div class="ap-desc">KQL, SPL, Sigma, or XQL. Claude, GPT-4o, Gemini, or Groq. Pick what fits your environment.</div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <div class="pillar-title">YOUR STACK, YOUR PROVIDER</div>
+          <div class="pillar-desc">KQL, SPL, Sigma, or XQL. Claude, GPT-4o, Gemini Flash, or Groq. Your API key, your model, your budget. Switch provider per session with no re-configuration. Bring your own contract.</div>
+        </div>
+      </div>
+
+      <div class="section-label">TRUST &amp; ARCHITECTURE</div>
+
+      <div class="compliance-row">
+        <div class="compliance-cell">
+          <div class="compliance-val">BROWSER-ONLY</div>
+          <div class="compliance-label">NO SERVER COMPONENT</div>
+        </div>
+        <div class="compliance-cell">
+          <div class="compliance-val">ZERO RETENTION</div>
+          <div class="compliance-label">NO H3AD-SEC LOGGING</div>
+        </div>
+        <div class="compliance-cell">
+          <div class="compliance-val">localStorage</div>
+          <div class="compliance-label">API KEYS NEVER TRANSMITTED</div>
+        </div>
+        <div class="compliance-cell">
+          <div class="compliance-val">BYOK</div>
+          <div class="compliance-label">BRING YOUR OWN KEY</div>
+        </div>
+        <div class="compliance-cell">
+          <div class="compliance-val">STATIC DEPLOY</div>
+          <div class="compliance-label">GITHUB PAGES / NO RUNTIME</div>
         </div>
       </div>
 
