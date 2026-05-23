@@ -902,6 +902,74 @@
         <a class="tf-link" href="https://h3ad-sec.github.io/CHRONO-AI/" target="_blank" rel="noopener">LAUNCH CHRONO-AI →</a>
       </div>
 
+      <div class="tool-feature">
+        <div class="tf-header">
+          <div class="tf-name">THREATBRIEF-AI</div>
+          <span class="card-badge badge-live">LIVE</span>
+        </div>
+        <div class="tf-tagline">Threat intelligence briefing generator.</div>
+        <div class="tf-body">Threat intelligence briefing generator.</div>
+        <div class="provider-strip">
+          <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
+          <span class="prov-tag">GPT-4O (OPENAI)</span>
+          <span class="prov-tag">GEMINI FLASH (GOOGLE)</span>
+          <span class="prov-tag">LLAMA 3.3 (GROQ)</span>
+        </div>
+        <div class="tf-meta" style="margin-top:1.25rem;">ACTOR · TTPS · IOC TABLE · EXEC SUMMARY · DETECTION FOCUS</div>
+        <a class="tf-link" href="https://h3ad-sec.github.io/THREATBRIEF-AI/" target="_blank" rel="noopener">LAUNCH THREATBRIEF-AI →</a>
+      </div>
+
+      <div class="tool-feature">
+        <div class="tf-header">
+          <div class="tf-name">PERSONA-AI</div>
+          <span class="card-badge badge-live">LIVE</span>
+        </div>
+        <div class="tf-tagline">Threat actor profile builder.</div>
+        <div class="tf-body">Threat actor profile builder.</div>
+        <div class="provider-strip">
+          <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
+          <span class="prov-tag">GPT-4O (OPENAI)</span>
+          <span class="prov-tag">GEMINI FLASH (GOOGLE)</span>
+          <span class="prov-tag">LLAMA 3.3 (GROQ)</span>
+        </div>
+        <div class="tf-meta" style="margin-top:1.25rem;">CAPABILITY TIER · TOOLSET · CAMPAIGNS · DETECTION PRIORITIES</div>
+        <a class="tf-link" href="https://h3ad-sec.github.io/PERSONA-AI/" target="_blank" rel="noopener">LAUNCH PERSONA-AI →</a>
+      </div>
+
+      <div class="tool-feature">
+        <div class="tf-header">
+          <div class="tf-name">DEBRIEF-AI</div>
+          <span class="card-badge badge-live">LIVE</span>
+        </div>
+        <div class="tf-tagline">Incident post-mortem generator.</div>
+        <div class="tf-body">Incident post-mortem generator.</div>
+        <div class="provider-strip">
+          <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
+          <span class="prov-tag">GPT-4O (OPENAI)</span>
+          <span class="prov-tag">GEMINI FLASH (GOOGLE)</span>
+          <span class="prov-tag">LLAMA 3.3 (GROQ)</span>
+        </div>
+        <div class="tf-meta" style="margin-top:1.25rem;">ROOT CAUSE · GAP RATING · LESSONS LEARNED · ACTION ITEMS</div>
+        <a class="tf-link" href="https://h3ad-sec.github.io/DEBRIEF-AI/" target="_blank" rel="noopener">LAUNCH DEBRIEF-AI →</a>
+      </div>
+
+      <div class="tool-feature">
+        <div class="tf-header">
+          <div class="tf-name">MALBRIEF-AI</div>
+          <span class="card-badge badge-live">LIVE</span>
+        </div>
+        <div class="tf-tagline">Malware behavior analyzer.</div>
+        <div class="tf-body">Malware behavior analyzer.</div>
+        <div class="provider-strip">
+          <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
+          <span class="prov-tag">GPT-4O (OPENAI)</span>
+          <span class="prov-tag">GEMINI FLASH (GOOGLE)</span>
+          <span class="prov-tag">LLAMA 3.3 (GROQ)</span>
+        </div>
+        <div class="tf-meta" style="margin-top:1.25rem;">MALWARE CLASSIFICATION · MITRE TECHNIQUES · DETECTION SIGNATURES · HUNTING PIVOTS</div>
+        <a class="tf-link" href="https://h3ad-sec.github.io/MALBRIEF-AI/" target="_blank" rel="noopener">LAUNCH MALBRIEF-AI →</a>
+      </div>
+
       <div class="section-label" style="margin-top:3rem;">BUILT FOR SECURITY TEAMS</div>
 
       <div class="pillars">
@@ -975,9 +1043,9 @@
       const l = document.body.classList.toggle('light');
       document.body.classList.toggle('dark', !l);
       const t = l ? 'light' : 'dark';
-      localStorage.setItem('theme', t); setLogo(t);
+      localStorage.setItem('h3ad-theme', t); setLogo(t);
     }
-    const saved = localStorage.getItem('theme');
+    const saved = localStorage.getItem('h3ad-theme');
     if (saved === 'light') { document.body.classList.add('light'); document.body.classList.remove('dark'); setLogo('light'); }
     else { document.body.classList.add('dark'); document.body.classList.remove('light'); setLogo('dark'); }
 
