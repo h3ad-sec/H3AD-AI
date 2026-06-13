@@ -25,6 +25,12 @@ ATT&CK technique mapper. Paste alert details, log excerpts, or behavioral descri
 ### [CHRONO-AI](https://h3ad-sec.github.io/CHRONO-AI/)
 Incident timeline builder. Paste raw investigation notes, log snippets, or IR report text and receive a structured chronological event timeline with artifact callouts and gaps flagged.
 
+### [MALBRIEF-AI](https://h3ad-sec.github.io/MALBRIEF-AI/)
+Malware behavior analyzer. Input behavioral indicators, sandbox output, or incident context; receive malware classification, MITRE ATT&CK technique mapping, detection signatures, and hunting pivot suggestions. Also listed under H3AD-DF.
+
+### [PROMPTVAULT](https://h3ad-sec.github.io/PROMPTVAULT/)
+Curated AI prompt library for SOC analysts and detection engineers. Browse 100+ prompts across 6 categories: detection engineering, threat hunting, incident response, threat intelligence, SOC operations, and training. YAML-backed, searchable.
+
 ---
 
 ## Part of H3AD-SEC
@@ -37,10 +43,11 @@ Other modules: [H3AD-X](https://h3ad-sec.github.io/H3AD-X/) · [H3AD-DETECT](htt
 
 | Module | Tools |
 |--------|-------|
-| [H3AD-X](https://h3ad-sec.github.io/H3AD-X/) | X-VERDIKT, PARSE-X, DNSCOPE |
-| [H3AD-AI](https://h3ad-sec.github.io/H3AD-AI/) | INSIGHT-AI, QUERYCRAFT-AI, FPLENS-AI, ATTMAP-AI, CHRONO-AI, MALBRIEF-AI |
+| [H3AD-X](https://h3ad-sec.github.io/H3AD-X/) | X-VERDIKT, PARSE-X, DNSCOPE, MAILSCOPE |
+| [H3AD-AI](https://h3ad-sec.github.io/H3AD-AI/) | INSIGHT-AI, QUERYCRAFT-AI, FPLENS-AI, ATTMAP-AI, CHRONO-AI, MALBRIEF-AI, PROMPTVAULT |
 | [H3AD-DETECT](https://h3ad-sec.github.io/H3AD-DETECT/) | TRACERULES |
 | [H3AD-HUNT](https://h3ad-sec.github.io/H3AD-HUNT/) | HYPOS, PIVEX, TRACEPULSE |
 | [H3AD-OPS](https://h3ad-sec.github.io/H3AD-OPS/) | QUICKTRACE, SHIFTLOG, PHISHOPS |
-| [H3AD-DF](https://h3ad-sec.github.io/H3AD-DF/) | REGSCOPE |
-| [H3AD-IR](https://h3ad-sec.github.io/H3AD-IR/) | — |
+| [H3AD-DF](https://h3ad-sec.github.io/H3AD-DF/) | REGSCOPE, MALBRIEF-AI |
+| [H3AD-IR](https://h3ad-sec.github.io/H3AD-IR/) | PHISHBOOK |
+| [H3AD-LEARN](https://h3ad-sec.github.io/H3AD-LEARN/) | Threat Hunting (9 ch), LOLBAS (8 ch) |
