@@ -671,7 +671,6 @@
           <a href="https://h3ad-sec.github.io/PHISHBOOK/" target="_blank" rel="noopener">PHISHBOOK</a>
         </div></div>
       </div>
-      <a href="https://h3ad-sec.github.io/docs/">DOCS</a>
       <a href="mailto:h3adsec@gmail.com">CONTACT</a>
     </div>
     <div class="theme-toggle" onclick="toggleTheme()" title="Toggle theme">
@@ -714,32 +713,27 @@
     <a href="https://h3ad-sec.github.io/H3AD-IR/" onclick="closeDrawer()">H3AD-IR
       &nbsp;↗</a>
     <a href="https://h3ad-sec.github.io/PHISHBOOK/" target="_blank" rel="noopener" onclick="closeDrawer()" class="drawer-sub">↳ PHISHBOOK ↗</a>
-    <a href="https://h3ad-sec.github.io/docs/" onclick="closeDrawer()">DOCS</a>
     <a href="mailto:h3adsec@gmail.com" onclick="closeDrawer()">CONTACT</a>
   </div>
 
   <div class="page">
       <div class="hero">
         <span class="hero-tag">H3AD-SEC · AI-ASSISTED ANALYSIS HUB</span>
-        <h1 class="hero-title">Seven AI Tools Built for<br><span>SOC Workflows.</span></h1>
-        <p class="hero-sub">VERDIKT-AI, INSIGHT-AI, QUERYCRAFT-AI, FPLENS-AI, ATTMAP-AI, CHRONO-AI, MALBRIEF-AI, and PROMPTVAULT, each purpose-built for a distinct analyst workflow. L3 analyst persona throughout. Client-side execution, no data stored, no account required.</p>
+        <h1 class="hero-title">An AI Prompt Arsenal<br><span>Built for SOC Workflows.</span></h1>
+        <p class="hero-sub">PROMPTVAULT is a community-driven library of AI prompts for SOC analysts, detection engineers, and threat hunters. Browse, filter, and copy prompts by role, task, and platform. Client-side, no account required.</p>
         <div class="hero-chips">
           <span class="hero-chip">ZERO DATA RETENTION</span>
           <span class="hero-chip">BROWSER-NATIVE</span>
-          <span class="hero-chip">MULTI-SELECT MODES</span>
-          <span class="hero-chip">PARALLEL EXECUTION</span>
           <span class="hero-chip">NO ACCOUNT REQUIRED</span>
         </div>
         <div class="hero-stats">
-          <div class="stat-chip"><span class="stat-val">7</span><span class="stat-label">AI TOOLS</span></div>
-          <div class="stat-chip"><span class="stat-val">4</span><span class="stat-label">AI PROVIDERS</span></div>
+          <div class="stat-chip"><span class="stat-val">1</span><span class="stat-label">AI TOOL</span></div>
           <div class="stat-chip"><span class="stat-val">ZERO</span><span class="stat-label">DATA RETENTION</span></div>
-          <div class="stat-chip"><span class="stat-val">4</span><span class="stat-label">SIEM FORMATS</span></div>
         </div>
       </div>
 
       <div class="manifesto-strip">
-        <p class="manifesto-text">An analyst shouldn't spend forty minutes writing the same runbook for the same alert type for the hundredth time. Pick the tool. Paste the alert. Get L3-grade output in seconds.<br><span style="font-size:0.65rem;color:var(--muted);letter-spacing:0.06em;">No backend. No retention. Your API key, your LLM, your output.</span></p>
+        <p class="manifesto-text">An analyst shouldn't start every task from a blank prompt box.<br><span style="font-size:0.65rem;color:var(--muted);letter-spacing:0.06em;">Browse by role, task, and platform. Copy. Done.</span></p>
       </div>
 
       <div class="section-label">TOOLS</div>
@@ -747,15 +741,11 @@
       <div class="cap-strip">
         <div class="cap-item">
           <span class="cap-label">AI Tools</span>
-          <span class="cap-value"><span>7</span> Tools Live</span>
+          <span class="cap-value"><span>1</span> Tool Live</span>
         </div>
         <div class="cap-item">
           <span class="cap-label">Use Cases</span>
           <span class="cap-value">SOC <span>Workflows</span></span>
-        </div>
-        <div class="cap-item">
-          <span class="cap-label">Persona</span>
-          <span class="cap-value">L3 <span>Analyst</span></span>
         </div>
         <div class="cap-item">
           <span class="cap-label">Privacy</span>
@@ -765,160 +755,6 @@
 
       <div class="tool-feature">
         <div class="tf-header">
-          <div class="tf-name">INSIGHT-AI</div>
-          <span class="card-badge badge-live">LIVE</span>
-        </div>
-        <div class="tf-tagline">AI Runbook Generator · L3 Analyst Persona</div>
-        <div class="tf-body">AI runbook generator with an L3 analyst persona. Produces a structured 10-section investigation playbook from a single alert input.</div>
-
-        <div class="mode-grid">
-          <div class="mode-cell mode-full">
-            <div class="mode-cell-icon">◉</div>
-            <div class="mode-cell-name">FULL RUNBOOK</div>
-            <div class="mode-cell-desc">10-section parallel generation, summary through containment</div>
-          </div>
-          <div class="mode-cell">
-            <div class="mode-cell-icon">▶</div>
-            <div class="mode-cell-name">TRIAGE</div>
-            <div class="mode-cell-desc">Severity badge + ordered L3 investigation chain</div>
-          </div>
-          <div class="mode-cell">
-            <div class="mode-cell-icon">◱</div>
-            <div class="mode-cell-name">PLAYBOOK</div>
-            <div class="mode-cell-desc">L1 / L2 / L3 / IR tiered response steps</div>
-          </div>
-          <div class="mode-cell">
-            <div class="mode-cell-icon">○</div>
-            <div class="mode-cell-name">FP LENS</div>
-            <div class="mode-cell-desc">TP / FP / Benign breakdown with verdict guide</div>
-          </div>
-          <div class="mode-cell">
-            <div class="mode-cell-icon">⌕</div>
-            <div class="mode-cell-name">QUERIES</div>
-            <div class="mode-cell-desc">DETECT and HUNT queries in your SIEM format</div>
-          </div>
-          <div class="mode-cell">
-            <div class="mode-cell-icon">◇</div>
-            <div class="mode-cell-name">ATT&amp;CK</div>
-            <div class="mode-cell-desc">Sub-technique mapping with actor attribution</div>
-          </div>
-          <div class="mode-cell">
-            <div class="mode-cell-icon">◈</div>
-            <div class="mode-cell-name">ARTIFACTS</div>
-            <div class="mode-cell-desc">Structured IOC extraction with confidence scoring</div>
-          </div>
-          <div class="mode-cell">
-            <div class="mode-cell-icon">⏱</div>
-            <div class="mode-cell-name">TIMELINE</div>
-            <div class="mode-cell-desc">Chronological event reconstruction from raw logs</div>
-          </div>
-        </div>
-
-        <div class="cap-list">
-          <div class="cap-item"><span class="cap-dot">◆</span><span>L3 SOC analyst persona, APT hunting depth, precise MITRE sub-techniques (T1059.001 not T1059), DETECT and HUNT query prefixes, forensic artifact specificity with exact event IDs and registry paths</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Strict data discipline, no hallucinated IPs, hashes, or filenames; severity is never inflated; every output element is grounded in your input or omitted entirely</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Multi-select execution, combine any modes; parallel API calls with per-mode skeleton slots and independent per-mode retry on rate limit or failure</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Auto-groups fire when context is present, timeline reconstruction, cross-source correlation, and artifact extraction run automatically alongside the standard sections</span></div>
-          <div class="cap-item"><span class="cap-dot">◆</span><span>Export in four formats, Markdown, JSON, YAML, plain text, or copy the full runbook to clipboard in one click</span></div>
-        </div>
-
-        <div class="provider-strip">
-          <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
-          <span class="prov-tag">GPT-4O (OPENAI)</span>
-          <span class="prov-tag">GEMINI FLASH (GOOGLE)</span>
-          <span class="prov-tag">LLAMA 3.3 (GROQ)</span>
-        </div>
-
-        <div class="tf-meta" style="margin-top:1.25rem;">8 MODES · 4 PROVIDERS · KQL · SPL · SIGMA · XQL · EXPORT MD / JSON / YAML / TXT</div>
-        <a class="tf-link" href="https://h3ad-sec.github.io/INSIGHT-AI/" target="_blank" rel="noopener">LAUNCH INSIGHT-AI →</a>
-      </div>
-
-      <div class="tool-feature">
-        <div class="tf-header">
-          <div class="tf-name">QUERYCRAFT-AI</div>
-          <span class="card-badge badge-live">LIVE</span>
-        </div>
-        <div class="tf-tagline">AI Detection Query Builder · KQL · Sigma · XQL</div>
-        <div class="tf-body">Describe what you want to detect in plain language, get a structured KQL, Sigma, or XQL query with MITRE tagging.</div>
-        <div class="provider-strip">
-          <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
-          <span class="prov-tag">GPT-4O (OPENAI)</span>
-          <span class="prov-tag">GEMINI FLASH (GOOGLE)</span>
-          <span class="prov-tag">LLAMA 3.3 (GROQ)</span>
-        </div>
-        <div class="tf-meta" style="margin-top:1.25rem;">4 SIEM FORMATS · DETECT + HUNT TRACKS · MITRE COVERAGE · KQL · SPL · SIGMA · XQL</div>
-        <a class="tf-link" href="https://h3ad-sec.github.io/QUERYCRAFT-AI/" target="_blank" rel="noopener">LAUNCH QUERYCRAFT-AI →</a>
-      </div>
-
-      <div class="tool-feature">
-        <div class="tf-header">
-          <div class="tf-name">FPLENS-AI</div>
-          <span class="card-badge badge-live">LIVE</span>
-        </div>
-        <div class="tf-tagline">"Tune smarter. Detect cleaner."</div>
-        <div class="tf-body">Analyse a detection alert for false positive likelihood. Outputs suppression suggestions and whitelist logic.</div>
-        <div class="provider-strip">
-          <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
-          <span class="prov-tag">GPT-4O (OPENAI)</span>
-          <span class="prov-tag">GEMINI FLASH (GOOGLE)</span>
-          <span class="prov-tag">LLAMA 3.3 (GROQ)</span>
-        </div>
-        <div class="tf-meta" style="margin-top:1.25rem;">RULE LANGUAGE AUTO-DETECTED · FP / TP ANALYSIS · EXCLUSION GENERATION · TUNING GUIDANCE</div>
-        <a class="tf-link" href="https://h3ad-sec.github.io/FPLENS-AI/" target="_blank" rel="noopener">LAUNCH FPLENS-AI →</a>
-      </div>
-
-      <div class="tool-feature">
-        <div class="tf-header">
-          <div class="tf-name">ATTMAP-AI</div>
-          <span class="card-badge badge-live">LIVE</span>
-        </div>
-        <div class="tf-tagline">"Behavior to ATT&CK. Mapped."</div>
-        <div class="tf-body">Map an alert or log snippet to MITRE ATT&CK techniques and sub-techniques with confidence scores.</div>
-        <div class="provider-strip">
-          <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
-          <span class="prov-tag">GPT-4O (OPENAI)</span>
-          <span class="prov-tag">GEMINI FLASH (GOOGLE)</span>
-          <span class="prov-tag">LLAMA 3.3 (GROQ)</span>
-        </div>
-        <div class="tf-meta" style="margin-top:1.25rem;">ATT&CK ENTERPRISE · TECHNIQUE + SUB-TECHNIQUE · CONFIDENCE SCORING · KILL CHAIN MAPPING</div>
-        <a class="tf-link" href="https://h3ad-sec.github.io/ATTMAP-AI/" target="_blank" rel="noopener">LAUNCH ATTMAP-AI →</a>
-      </div>
-
-      <div class="tool-feature">
-        <div class="tf-header">
-          <div class="tf-name">CHRONO-AI</div>
-          <span class="card-badge badge-live">LIVE</span>
-        </div>
-        <div class="tf-tagline">"From logs to kill chain. Chronologically."</div>
-        <div class="tf-body">Reconstruct a kill chain timeline from log events, ordered by MITRE phase, with lateral movement and persistence flagged.</div>
-        <div class="provider-strip">
-          <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
-          <span class="prov-tag">GPT-4O (OPENAI)</span>
-          <span class="prov-tag">GEMINI FLASH (GOOGLE)</span>
-          <span class="prov-tag">LLAMA 3.3 (GROQ)</span>
-        </div>
-        <div class="tf-meta" style="margin-top:1.25rem;">MIXED LOG FORMATS · KILL CHAIN STAGES · MITRE TECHNIQUE MAPPING · GAP ANALYSIS</div>
-        <a class="tf-link" href="https://h3ad-sec.github.io/CHRONO-AI/" target="_blank" rel="noopener">LAUNCH CHRONO-AI →</a>
-      </div>
-
-      <div class="tool-feature">
-        <div class="tf-header">
-          <div class="tf-name">MALBRIEF-AI</div>
-          <span class="card-badge badge-live">LIVE</span>
-        </div>
-        <div class="tf-tagline">Malware Classification · MITRE Mapping · Detection Signatures</div>
-        <div class="tf-body">Submit behavioral indicators to an AI analyst and get malware classification, MITRE ATT&CK technique mapping, detection signatures, and hunting pivot recommendations.</div>
-        <div class="provider-strip">
-          <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
-          <span class="prov-tag">GPT-4O (OPENAI)</span>
-          <span class="prov-tag">GEMINI FLASH (GOOGLE)</span>
-          <span class="prov-tag">LLAMA 3.3 (GROQ)</span>
-        </div>
-        <div class="tf-meta" style="margin-top:1.25rem;">MALWARE CLASSIFICATION · MITRE TECHNIQUES · DETECTION SIGNATURES · HUNTING PIVOTS</div>
-        <a class="tf-link" href="https://h3ad-sec.github.io/MALBRIEF-AI/" target="_blank" rel="noopener">LAUNCH MALBRIEF-AI →</a>
-      </div>
-      <div class="tool-feature">
-        <div class="tf-header">
           <div class="tf-name">PROMPTVAULT</div>
           <span class="card-badge badge-live">LIVE</span>
         </div>
@@ -926,68 +762,6 @@
         <div class="tf-body">Community-driven library of AI prompts for SOC analysts, detection engineers, and threat hunters. Browse, filter, and copy prompts by role, task, and platform.</div>
         <div class="tf-meta" style="margin-top:1.25rem;">SOC ANALYST · DETECTION ENGINEERING · THREAT HUNTING · AI PROMPTS</div>
         <a class="tf-link" href="https://h3ad-sec.github.io/PROMPTVAULT/" target="_blank" rel="noopener">LAUNCH PROMPTVAULT →</a>
-      </div>
-
-      <div class="tool-feature">
-        <div class="tf-header">
-          <div class="tf-name">VERDIKT-AI</div>
-          <span class="card-badge badge-live">LIVE</span>
-        </div>
-        <div class="tf-tagline">IOC Enrichment + AI Analysis · Narrative · MITRE · Detection Queries</div>
-        <div class="tf-body">Deep IOC enrichment across 9 sources (VT, AbuseIPDB, OTX, ThreatFox, URLScan, URLhaus, MalwareBazaar, HybridAnalysis) with BYOK AI analysis — analyst narrative, MITRE ATT&amp;CK mapping, and KQL/SPL/Sigma query generation per IOC.</div>
-        <div class="provider-strip">
-          <span class="prov-tag">CLAUDE (ANTHROPIC)</span>
-          <span class="prov-tag">GPT-4O (OPENAI)</span>
-          <span class="prov-tag">GEMINI FLASH (GOOGLE)</span>
-          <span class="prov-tag">LLAMA 3.3 (GROQ)</span>
-        </div>
-        <div class="tf-meta" style="margin-top:1.25rem;">IP · DOMAIN · URL · HASH · BYOK · MITRE MAPPING · KQL · SPL · SIGMA · 9 SOURCES</div>
-        <a class="tf-link" href="https://h3ad-sec.github.io/VERDIKT-AI/" target="_blank" rel="noopener">LAUNCH VERDIKT-AI →</a>
-      </div>
-
-      <div class="section-label" style="margin-top:3rem;">BUILT FOR SECURITY TEAMS</div>
-
-      <div class="pillars">
-        <div class="pillar">
-          <div class="pillar-num">01</div>
-          <div class="pillar-title">ZERO DATA FOOTPRINT</div>
-          <div class="pillar-desc">Your alert travels directly from browser to the LLM provider you choose. No H3AD-SEC backend, no logging, no retention. API keys live in localStorage and never leave your machine. Safe for sensitive alert context.</div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-num">02</div>
-          <div class="pillar-title">L3 ANALYST GRADE OUTPUT</div>
-          <div class="pillar-desc">The underlying persona is a senior threat hunter, APT campaign experience, malware analysis depth, production SIEM rule authorship, IR for critical infrastructure. The analyst gets L3-quality guidance executable without hand-holding.</div>
-        </div>
-        <div class="pillar">
-          <div class="pillar-num">03</div>
-          <div class="pillar-title">YOUR STACK, YOUR PROVIDER</div>
-          <div class="pillar-desc">KQL, SPL, Sigma, or XQL. Claude, GPT-4o, Gemini Flash, or Groq. Your API key, your model, your budget. Switch provider per session with no re-configuration. Bring your own contract.</div>
-        </div>
-      </div>
-
-      <div class="section-label">TRUST &amp; ARCHITECTURE</div>
-
-      <div class="compliance-row">
-        <div class="compliance-cell">
-          <div class="compliance-val">BROWSER-ONLY</div>
-          <div class="compliance-label">NO SERVER COMPONENT</div>
-        </div>
-        <div class="compliance-cell">
-          <div class="compliance-val">ZERO RETENTION</div>
-          <div class="compliance-label">NO H3AD-SEC LOGGING</div>
-        </div>
-        <div class="compliance-cell">
-          <div class="compliance-val">localStorage</div>
-          <div class="compliance-label">API KEYS NEVER TRANSMITTED</div>
-        </div>
-        <div class="compliance-cell">
-          <div class="compliance-val">BYOK</div>
-          <div class="compliance-label">BRING YOUR OWN KEY</div>
-        </div>
-        <div class="compliance-cell">
-          <div class="compliance-val">STATIC DEPLOY</div>
-          <div class="compliance-label">GITHUB PAGES / NO RUNTIME</div>
-        </div>
       </div>
 
       <a class="back-link" href="https://h3ad-sec.github.io/">← BACK TO H3AD-SEC</a>
