@@ -9,19 +9,19 @@
   <meta http-equiv="Expires" content="0">
   <title>H3AD-AI — AI-Assisted Analysis Hub // H3AD-SEC</title>
   <meta name="description"
-    content="H3AD-AI by H3AD-SEC — five purpose-built AI tools for SOC workflows. L3 analyst persona, zero data retention. Runbook generation, detection queries, false positive analysis, ATT&CK mapping, and kill chain timeline reconstruction. Browser-native, no backend.">
+    content="H3AD-AI by H3AD-SEC — PROMPTVAULT, a library of ready-to-use AI prompts for SOC analysts, detection engineers, and threat hunters. Zero data retention, browser-native, no account required.">
   <link rel="canonical" href="https://h3ad-sec.github.io/H3AD-AI/" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="H3AD-SEC" />
   <meta property="og:url" content="https://h3ad-sec.github.io/H3AD-AI/" />
   <meta property="og:title" content="H3AD-AI — AI-Assisted Analysis Hub" />
-  <meta property="og:description" content="H3AD-AI by H3AD-SEC — five purpose-built AI tools for SOC workflows. L3 analyst persona, zero data retention. Runbook generation, detection queries, false positive analysis, ATT&CK mapping, and kill chain timeline reconstruction. Browser-native, no backend." />
+  <meta property="og:description" content="H3AD-AI by H3AD-SEC — PROMPTVAULT, a library of ready-to-use AI prompts for SOC analysts, detection engineers, and threat hunters. Zero data retention, browser-native, no account required." />
   <meta property="og:image" content="https://raw.githubusercontent.com/h3ad-sec/h3ad-sec.github.io/main/logo-dark.png" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="H3AD-AI — AI-Assisted Analysis Hub" />
-  <meta name="twitter:description" content="H3AD-AI by H3AD-SEC — five purpose-built AI tools for SOC workflows. L3 analyst persona, zero data retention. Runbook generation, detection queries, false positive analysis, ATT&CK mapping, and kill chain timeline reconstruction. Browser-native, no backend." />
+  <meta name="twitter:description" content="H3AD-AI by H3AD-SEC — PROMPTVAULT, a library of ready-to-use AI prompts for SOC analysts, detection engineers, and threat hunters. Zero data retention, browser-native, no account required." />
   <meta name="twitter:image" content="https://raw.githubusercontent.com/h3ad-sec/h3ad-sec.github.io/main/logo-dark.png" />
 
   <meta name="theme-color" content="#080c14" />
@@ -33,7 +33,7 @@
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "H3AD-AI — AI-Assisted Analysis Hub",
-    "description": "H3AD-AI by H3AD-SEC — five purpose-built AI tools for SOC workflows. L3 analyst persona, zero data retention. Runbook generation, detection queries, false positive analysis, ATT&CK mapping, and kill chain timeline reconstruction. Browser-native, no backend.",
+    "description": "H3AD-AI by H3AD-SEC — PROMPTVAULT, a library of ready-to-use AI prompts for SOC analysts, detection engineers, and threat hunters. Zero data retention, browser-native, no account required.",
     "url": "https://h3ad-sec.github.io/H3AD-AI/",
     "isPartOf": {
       "@type": "WebSite",
@@ -50,14 +50,15 @@
       --surface: #18253a;
       --text: #e6edf3;
       --text-dim: #96b0cc;
-      --muted: #6b7280;
+      --muted: #8b949e;
       --muted-dim: #3a5470;
       --accent: #00d4ff;
-      --accent2: #58a6ff;
+      --accent2: #3b82f6;
       --border: #1c2333;
       --border-dim: #111827;
       --ui: 'IBM Plex Sans', sans-serif;
       --fs-xs: 11px;
+      --fs-sm: 13px;
       --primary:        #00d4ff;
       --primary-dim:    rgba(0, 212, 255, 0.08);
       --primary-glow:   rgba(0, 212, 255, 0.18);
@@ -68,24 +69,30 @@
     }
 
     body.light {
-      --bg: #f8fafc;
-      --panel: #ffffff;
-      --panel-alt: #f1f5f9;
-      --surface: #ccd8ec;
-      --text: #0d1117;
-      --text-dim: #142540;
-      --muted: #5c6b8a;
-      --muted-dim: #5c7a9a;
-      --accent: #0284c7;
-      --accent2: #2563eb;
-      --border: #e2e8f0;
-      --border-dim: #f1f5f9;
-      --primary:        #0284c7;
-      --primary-dim:    rgba(2, 132, 199, 0.07);
-      --primary-glow:   rgba(2, 132, 199, 0.14);
-      --status-live:    #0284c7;
-      --status-partial: #d97706;
-      --status-soon:    #cbd5e1;
+      /* softened, low-glare light theme, aligned with H3AD-X platform palette */
+      --bg: #D3D7DC;
+      --panel: #DADDE1;
+      --panel-alt: #C9CDD2;
+      --surface: #C9CDD2;
+      --text: #000000;
+      --text-dim: #2E343B;
+      --muted: #2E343B;
+      --muted-dim: #4A525B;
+      --accent: #0A6EA8;
+      --accent2: #C2540E;
+      --border: #BBC0C6;
+      --border-dim: #C9CDD2;
+      --primary:        #0A6EA8;
+      --primary-dim:    rgba(10, 110, 168, 0.07);
+      --primary-glow:   rgba(10, 110, 168, 0.14);
+      --status-live:    #0A6EA8;
+      --status-partial: #B45309;
+      --status-soon:    #AEB4BB;
+      font-weight: 500;
+    }
+    body.light .hero-sub,
+    body.light .tf-body {
+      font-weight: 400;
     }
 
     *,
@@ -149,7 +156,7 @@
     }
 
     body.light .nav {
-      background: rgba(242, 245, 250, 0.9);
+      background: rgba(211, 215, 220, 0.9);
     }
 
     .nav-brand {
@@ -373,18 +380,7 @@
     }
 
     .hero {
-      padding: 3rem 0 2rem;
-    }
-
-    .hero-tag {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--accent);
-      opacity: 0.75;
-      display: block;
-      margin-bottom: 1rem;
+      padding: 0.5rem 0 2rem;
     }
 
     .hero-title {
@@ -399,29 +395,28 @@
 
     .hero-title span {
       color: var(--accent);
-      text-shadow: 0 0 32px rgba(0, 212, 255, 0.4);
-    }
-
-    body.light .hero-title span {
-      text-shadow: 0 0 24px rgba(2, 132, 199, 0.35);
     }
 
     .hero-sub {
       font-family: 'Exo 2', sans-serif;
       font-weight: 300;
-      font-size: 0.74rem;
+      font-size: var(--fs-sm);
       color: var(--text-dim);
       line-height: 1.9;
       max-width: 620px;
     }
 
-    .hero-stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:1.75rem;}
-    .stat-chip{display:flex;flex-direction:column;padding:10px 16px;background:var(--panel);border:1px solid var(--border);border-radius:4px;min-width:88px;}
-    .stat-val{font-family:'Exo 2',sans-serif;font-weight:700;font-size:1.05rem;color:var(--accent);letter-spacing:0.04em;line-height:1.2;}
-    .stat-label{font-size:0.53rem;letter-spacing:0.18em;color:var(--muted);margin-top:4px;}
+    .hero-banner{display:flex;justify-content:center;align-items:baseline;gap:2px;font-family:'Exo 2',sans-serif;font-weight:700;font-size:clamp(26px,5vw,42px);letter-spacing:4px;}
+    .hero-banner-tagline{text-align:center;font-family:'Exo 2',sans-serif;font-size:var(--fs-xs);color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:-6px;}
+    .hero-banner-by{text-align:center;font-family:var(--ui);font-weight:600;font-size:var(--fs-sm);color:var(--accent);letter-spacing:1px;margin-bottom:18px;}
+    .hero-intro{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:700px;margin:0 auto;}
+    .hero-intro .hero-title,.hero-intro .hero-sub{margin-left:auto;margin-right:auto;}
 
-    .manifesto-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2rem 0;margin:2.5rem 0 3rem;}
-    .manifesto-text{font-size:clamp(0.82rem,2vw,1.05rem);color:var(--text);line-height:1.9;letter-spacing:0.02em;}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin:1.75rem auto 0;max-width:640px;border-radius:6px;overflow:hidden;}
+    .hero-stat{background:var(--panel);padding:12px 16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;min-width:0;transition:background .2s;}
+    .hero-stat:hover{background:var(--panel-alt);}
+    .hero-stat-num{font-family:'Exo 2',sans-serif;font-weight:700;font-size:20px;color:var(--accent);}
+    .hero-stat-label{font-family:var(--ui);font-size:10px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;}
 
     .section-label {
       font-family: 'Share Tech Mono', monospace;
@@ -457,19 +452,23 @@
     .ap-title{font-size:0.72rem;letter-spacing:0.1em;color:var(--text);}
     .ap-desc{font-size:0.64rem;color:var(--muted);line-height:1.65;}
 
+    @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
     .card-badge { font-size:0.55rem; letter-spacing:0.18em; padding:3px 8px; border-radius:2px; text-transform:uppercase; white-space:nowrap; }
-    .badge-live { background:rgba(0, 212, 255, 0.1); color:#00d4ff; border:1px solid rgba(0, 212, 255, 0.25); }
+    .badge-live { background:var(--primary-dim); color:var(--accent); border:1px solid currentColor; }
     .badge-soon { background:rgba(98,128,156,0.12); color:var(--muted); border:1px solid var(--border); }
-    .tool-feature { background:var(--panel); border:1px solid var(--border); border-radius:6px; padding:28px 28px 22px; margin-bottom:14px; display:flex; flex-direction:column; gap:12px; position:relative; overflow:hidden; transition:border-color 0.2s,background 0.2s; }
-    .tool-feature::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--accent),transparent); opacity:0.55; }
-    .tool-feature:hover { border-color:rgba(0,212,255,0.35); background:rgba(0,212,255,0.02); }
-    .tf-header { display:flex; align-items:center; justify-content:space-between; gap:8px; }
-    .tf-name { font-family:'Exo 2',sans-serif; font-weight:700; font-size:1rem; letter-spacing:0.14em; color:var(--text); }
-    .tf-tagline { font-family:'Exo 2',sans-serif; font-weight:300; font-size:0.8rem; color:var(--accent); letter-spacing:0.03em; }
-    .tf-body { font-family:'Exo 2',sans-serif; font-weight:400; font-size:0.71rem; color:var(--text-dim); line-height:1.8; max-width:600px; }
-    .tf-meta { font-family:'Share Tech Mono',monospace; font-size:0.65rem; letter-spacing:0.2em; color:var(--muted); border-top:1px solid var(--border-dim); padding-top:10px; margin-top:2px; }
-    .tf-link { font-family:'Exo 2',sans-serif; font-weight:600; display:inline-flex; align-items:center; gap:6px; font-size:0.63rem; letter-spacing:0.14em; color:var(--accent); padding:7px 14px; border:1px solid rgba(0,212,255,0.3); border-radius:3px; transition:0.15s; align-self:flex-start; margin-top:2px; }
-    .tf-link:hover { background:rgba(0,212,255,0.08); }
+    .tool-feature { --tf-rgb:0,212,255; background:var(--panel); border:1px solid var(--border); border-radius:6px; padding:24px 24px 20px; margin-bottom:2rem; display:flex; flex-direction:column; gap:12px; position:relative; overflow:hidden; transition:border-color 0.2s,background 0.2s; animation:fadeIn .3s ease backwards; }
+    .tool-feature::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,rgb(var(--tf-rgb)),transparent); opacity:0.6; }
+    .tool-feature:hover { border-color:rgb(var(--tf-rgb)); background:rgba(var(--tf-rgb),0.02); }
+    .tf-header { display:flex; align-items:center; gap:12px; }
+    .tf-header .card-badge { margin-left:auto; flex-shrink:0; }
+    .tf-icon { flex-shrink:0; width:38px; height:38px; border-radius:7px; display:flex; align-items:center; justify-content:center; background:rgba(var(--tf-rgb),0.14); border:1px solid rgba(var(--tf-rgb),0.4); color:rgb(var(--tf-rgb)); font-family:'Exo 2',sans-serif; font-weight:700; font-size:0.72rem; letter-spacing:0.02em; }
+    .tf-header-text { flex:1; min-width:0; }
+    .tf-name { font-family:'Exo 2',sans-serif; font-weight:700; font-size:1rem; letter-spacing:0.1em; color:var(--text); }
+    .tf-tagline { font-family:'Exo 2',sans-serif; font-weight:400; font-size:0.72rem; color:rgb(var(--tf-rgb)); letter-spacing:0.02em; margin-top:2px; }
+    .tf-body { font-family:var(--ui); font-weight:400; font-size:var(--fs-sm); color:var(--muted); line-height:1.7; max-width:640px; }
+    .tf-meta { font-family:'Share Tech Mono',monospace; font-size:0.62rem; letter-spacing:0.14em; color:var(--muted); border-top:1px solid var(--border); padding-top:10px; margin-top:2px; }
+    .tf-link { font-family:var(--ui); font-weight:600; display:inline-flex; align-items:center; gap:6px; font-size:0.63rem; letter-spacing:0.14em; color:rgb(var(--tf-rgb)); padding:7px 14px; border:1px solid rgba(var(--tf-rgb),0.35); border-radius:3px; transition:0.15s; align-self:flex-start; margin-top:2px; }
+    .tf-link:hover { background:rgba(var(--tf-rgb),0.1); }
 
     .back-link {
       display: inline-flex;
@@ -561,6 +560,11 @@
     @media(max-width:1000px){
       .xv-nav-pill{opacity:1;transform:none;pointer-events:auto;transition:none;}
     }
+    @media (max-width: 480px) {
+      .nav-brand { margin-right: 0.6rem; }
+      .xv-pill-tagline { display: none; }
+      .xv-nav-pill { margin-left: 6px; padding-left: 6px; }
+    }
 
     body.nav-compact .nav-links { display: none; }
     body.nav-compact .hamburger { display: flex; }
@@ -579,16 +583,9 @@
       .approach-grid {
         grid-template-columns: 1fr;
       }
-
-      .stat-chip {
-        min-width: 72px;
-      }
     }
 
     /* ── Enterprise additions ───────────────────────────────────────── */
-    .hero-chips{display:flex;flex-wrap:wrap;gap:5px;margin:1.5rem 0 1.75rem;}
-    .hero-chip{font-size:0.52rem;letter-spacing:0.22em;color:var(--muted);border:1px solid var(--border-dim);border-radius:2px;padding:3px 9px;white-space:nowrap;}
-
     .mode-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin:1.5rem 0 0;}
     .mode-cell{background:var(--panel);padding:14px 14px 12px;display:flex;flex-direction:column;gap:4px;transition:background 0.15s;}
     .mode-cell:hover{background:var(--panel-alt);}
@@ -596,24 +593,6 @@
     .mode-cell .mc-name,.mode-cell-name{font-family:'Exo 2',sans-serif;font-weight:600;font-size:0.62rem;letter-spacing:0.12em;color:var(--text);}
     .mode-cell .mc-desc,.mode-cell-desc{font-family:'Exo 2',sans-serif;font-weight:400;font-size:0.65rem;color:var(--muted);line-height:1.55;}
     .mode-cell.mode-full{border-left:2px solid var(--accent);}
-
-    .cap-list{display:flex;flex-direction:column;gap:6px;margin:1.5rem 0 0;}
-    .cap-item{display:flex;align-items:baseline;gap:9px;font-size:0.65rem;color:var(--text-dim);line-height:1.6;}
-    .cap-dot{color:var(--accent);flex-shrink:0;font-size:0.5rem;}
-
-    .cap-strip {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1px; background: var(--border); border: 1px solid var(--border);
-      border-radius: 6px; overflow: hidden; margin-bottom: 2.5rem;
-    }
-    .cap-strip .cap-item {
-      background: var(--panel); padding: 14px 18px;
-      display: flex; flex-direction: column; gap: 5px;
-      align-items: flex-start; font-size: unset; color: unset; line-height: unset;
-    }
-    .cap-label { font-family: 'Share Tech Mono', monospace; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
-    .cap-value { font-family: 'Exo 2', sans-serif; font-weight: 600; font-size: 0.75rem; color: var(--text); letter-spacing: 0.04em; }
-    .cap-value span { color: var(--accent); }
 
     .provider-strip{display:flex;gap:6px;flex-wrap:wrap;margin-top:1.25rem;}
     .prov-tag{font-size:0.54rem;letter-spacing:0.16em;color:var(--muted);border:1px solid var(--border);border-radius:2px;padding:4px 10px;}
@@ -645,10 +624,7 @@
       .mode-grid { grid-template-columns: 1fr; }
       .tool-feature { padding: 18px 16px 14px; }
       .tf-meta { word-break: break-word; white-space: normal; }
-      .hero-chips { gap: 4px; }
-      .hero-chip { font-size: 0.48rem; }
-      .cap-strip { grid-template-columns: repeat(2, 1fr); }
-      .stat-chip { min-width: 68px; }
+      .hero-stat { padding: 10px 12px; }
       .provider-strip { gap: 4px; }
       .prov-tag { font-size: 0.5rem; padding: 3px 7px; }
     }
@@ -763,49 +739,33 @@
 
   <div class="page">
       <div class="hero">
-        <span class="hero-tag">H3AD-SEC · AI-ASSISTED ANALYSIS HUB</span>
-        <h1 class="hero-title">An AI Prompt Arsenal<br><span>Built for SOC Workflows.</span></h1>
-        <p class="hero-sub">PROMPTVAULT is a community-driven library of AI prompts for SOC analysts, detection engineers, and threat hunters. Browse, filter, and copy prompts by role, task, and platform. Client-side, no account required.</p>
-        <div class="hero-chips">
-          <span class="hero-chip">ZERO DATA RETENTION</span>
-          <span class="hero-chip">BROWSER-NATIVE</span>
-          <span class="hero-chip">NO ACCOUNT REQUIRED</span>
+        <div class="hero-banner"><span class="xv-pill-accent">H3AD</span><span class="xv-pill-text">-AI</span></div>
+        <div class="hero-banner-tagline">AI-ASSISTED ANALYSIS HUB</div>
+        <div class="hero-banner-by">by H3AD</div>
+        <div class="hero-intro">
+          <h1 class="hero-title">An AI Prompt Arsenal<br><span>Built for SOC Workflows.</span></h1>
+          <p class="hero-sub">PROMPTVAULT holds seven ready-to-use prompts for SOC triage, detection engineering, and threat hunting, organized by role and task and copied straight into any LLM, no account needed.</p>
         </div>
         <div class="hero-stats">
-          <div class="stat-chip"><span class="stat-val">1</span><span class="stat-label">AI TOOL</span></div>
-          <div class="stat-chip"><span class="stat-val">ZERO</span><span class="stat-label">DATA RETENTION</span></div>
+          <div class="hero-stat"><span class="hero-stat-num">1</span><span class="hero-stat-label">TOOL LIVE</span></div>
+          <div class="hero-stat"><span class="hero-stat-num">7</span><span class="hero-stat-label">PROMPTS</span></div>
+          <div class="hero-stat"><span class="hero-stat-num">ZERO</span><span class="hero-stat-label">DATA RETENTION</span></div>
         </div>
-      </div>
-
-      <div class="manifesto-strip">
-        <p class="manifesto-text">An analyst shouldn't start every task from a blank prompt box.<br><span style="font-size:0.65rem;color:var(--muted);letter-spacing:0.06em;">Browse by role, task, and platform. Copy. Done.</span></p>
       </div>
 
       <div class="section-label">TOOLS</div>
 
-      <div class="cap-strip">
-        <div class="cap-item">
-          <span class="cap-label">AI Tools</span>
-          <span class="cap-value"><span>1</span> Tool Live</span>
-        </div>
-        <div class="cap-item">
-          <span class="cap-label">Use Cases</span>
-          <span class="cap-value">SOC <span>Workflows</span></span>
-        </div>
-        <div class="cap-item">
-          <span class="cap-label">Privacy</span>
-          <span class="cap-value">No Data <span>Stored</span></span>
-        </div>
-      </div>
-
-      <div class="tool-feature">
+      <div class="tool-feature" style="--tf-rgb:56,189,248;">
         <div class="tf-header">
-          <div class="tf-name">PROMPTVAULT</div>
+          <div class="tf-icon">PV</div>
+          <div class="tf-header-text">
+            <div class="tf-name">PROMPTVAULT</div>
+            <div class="tf-tagline">AI Prompt Library · SOC Workflows</div>
+          </div>
           <span class="card-badge badge-live">LIVE</span>
         </div>
-        <div class="tf-tagline">AI Prompt Arsenal · Community Vault · SOC Analyst Toolkit</div>
-        <div class="tf-body">Community-driven library of AI prompts for SOC analysts, detection engineers, and threat hunters. Browse, filter, and copy prompts by role, task, and platform.</div>
-        <div class="tf-meta" style="margin-top:1.25rem;">SOC ANALYST · DETECTION ENGINEERING · THREAT HUNTING · AI PROMPTS</div>
+        <div class="tf-body">Ready-to-use AI prompts for SOC analysts, detection engineers, and threat hunters, organized by role and task with a copy-ready structure for any LLM.</div>
+        <div class="tf-meta">7 PROMPTS · SOC ANALYST · DETECTION ENGINEERING · THREAT HUNTING</div>
         <a class="tf-link" href="https://h3ad-sec.github.io/PROMPTVAULT/" target="_blank" rel="noopener">LAUNCH PROMPTVAULT →</a>
       </div>
 
